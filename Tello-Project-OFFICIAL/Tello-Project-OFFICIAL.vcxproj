@@ -123,7 +123,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Controladora.cpp" />
+    <ClCompile Include="Listas.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Tablero.cpp" />
+    <ClCompile Include="Tarjetas.cpp" />
     <ClCompile Include="Tello-Project-OFFICIAL.cpp" />
+    <ClCompile Include="Usuario.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Controladora.h" />
+    <ClInclude Include="Listas.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Tablero.h" />
+    <ClInclude Include="Tarjetas.h" />
+    <ClInclude Include="Usuario.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
