@@ -1,5 +1,7 @@
 #include "Usuario.h"
 
+Usuario::Usuario() {};
+
 Usuario::Usuario(std::string nombre, std::string password, std::string correo)
     : nombre(nombre), password(password), correo(correo) {}
 

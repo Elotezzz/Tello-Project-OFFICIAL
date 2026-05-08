@@ -7,6 +7,7 @@ public:
     std::string password;
     std::string correo;
 
+    Usuario();
     Usuario(std::string nombre, std::string password, std::string correo);
 
     void guardar(std::ofstream& archivo);
