@@ -5,22 +5,63 @@
 
 using namespace std;
 
-//void menuInsertar() {
-//	const char* opciones[] = { "Al inicio", "Al final", "En posición" };
-//	int op = mostrarMenu("INSERTAR", opciones, 3);
-//
-//	switch (op) {
-//	case 0: 
-//
-//		break;
-//	case 1: 
-//
-//		break;
-//	case 2: 
-//
-//		break;
-//	}
-//}
+inline int menuLista() {
+	const char* opcionesCrear[] = { "Crear Tarjeta", "Ver Tarjetas", "Mover Tarjeta", "Eliminar Tarjeta",
+				"Seleccionar Tarjeta", "Filtrar Tarjetas", "Volver" };
+	Menu menuCrear("LISTA", opcionesCrear, 7);
+	int opcL = menuCrear.mostrarMenu();
+	switch (opcL) {
+	case 0:
+		break;
+	case 1:
+		break;
+	case 2:
+		break;
+	case 3:
+		break;
+	case 4: {
+
+		//CREAR TARJETA
+
+		break;
+	}
+	case 5:
+		break;
+	case 6:
+		break;
+	}
+	return opcL;
+}
+
+
+inline int menuTablero() {
+	const char* opcionesCrear[] = { "Agregar Miembros", "Ver Listas", "Crear lista", "Eliminar Lista",
+				"Seleccionar Lista", "Ordenar Lista", "Volver" };
+	Menu menuCrear("TABLERO", opcionesCrear, 7);
+	int opcT = menuCrear.mostrarMenu();
+	switch (opcT) {
+	case 0:
+		break;
+	case 1:
+		break;
+	case 2:
+		break;
+	case 3:
+		break;
+	case 4: {
+
+		//SELECCIONAR LISTA
+
+		menuLista();
+		break;
+	}
+	case 5:
+		break;
+	case 6:
+		break;
+	}
+	return opcT; 
+}
 
 int main()
 {
@@ -40,8 +81,12 @@ int main()
 			break;
 		case 2:
 			break;
-		case 3:
+		case 3: {
+
+			//SELECCIONAR TABLERO
+			menuTablero();
 			break;
+			}
 		case 4:
 			break;
 		}

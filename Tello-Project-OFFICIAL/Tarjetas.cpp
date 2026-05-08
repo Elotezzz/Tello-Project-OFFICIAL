@@ -11,8 +11,8 @@ Tarjeta::~Tarjeta() {}
 std::string Tarjeta::getNombre() const { return nombre; }
 std::string Tarjeta::getId() const { return id; }
 std::string Tarjeta::getDescripcion() const { return descripcion; }
-Prioridad   Tarjeta::getPrioridad() const { return prioridad; }
-Fecha       Tarjeta::getFecha() const { return fecha; }
+Prioridad Tarjeta::getPrioridad() const { return prioridad; }
+Fecha Tarjeta::getFecha() const { return fecha; }
 
 void Tarjeta::setNombre(std::string nombre) { this->nombre = nombre; }
 void Tarjeta::setId(std::string id) { this->id = id; }
