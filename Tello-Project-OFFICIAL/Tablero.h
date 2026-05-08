@@ -2,13 +2,13 @@
 #include <string>
 #include <iostream>
 #include "Listado.h"
+#include "gestionListas.h"
 
 class Tablero
 {
 private:
     std::string nombre;
-    Listado* cabeza;
-    int cantidad;
+    LinkedListListados<Listado>* listados;
 
 public:
     Tablero();
@@ -20,7 +20,7 @@ public:
 
     void setNombre(std::string nombre);
 
-    void agregarListado(Listado* listado);
+    void agregarListado(Listado listado);
     void eliminarListado(std::string nombre);
     Listado* buscarListado(std::string nombre);
     void mostrarListados();

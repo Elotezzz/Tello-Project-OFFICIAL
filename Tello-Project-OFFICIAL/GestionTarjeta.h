@@ -204,4 +204,35 @@ public:
 		if (last == nullptr) return nullptr;
 		return &last->data;
 	}
+
+	void eliminarPorNombre(std::string nombre) {
+		if (IsEmpty()) {
+			std::cout << "La lista esta vacia\n";
+			return;
+		}
+
+		// Caso especial: es el primero
+		if (head->data.getNombre() == nombre) {
+			RemoveFirst();
+			return;
+		}
+
+		// Buscar el nodo anterior al que queremos eliminar
+		Nodo<T>* anterior = head;
+		while (anterior->next != nullptr && anterior->next->data.getNombre() != nombre) {
+			anterior = anterior->next;
+		}
+
+		// No se encontró
+		if (anterior->next == nullptr) {
+			std::cout << "No se encontro la tarjeta con nombre: " << nombre << std::endl;
+			return;
+		}
+
+		// Eliminar el nodo encontrado
+		Nodo<T>* aEliminar = anterior->next;
+		anterior->next = aEliminar->next;
+		delete aEliminar;
+		length--;
+	}
 };
