@@ -36,7 +36,7 @@
     <ClCompile Include="Tablero.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
-    <ClCompile Include="Listas.cpp">
+    <ClCompile Include="Listado.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
     <ClCompile Include="Tarjetas.cpp">
@@ -59,7 +59,7 @@
     <ClInclude Include="Tablero.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Listas.h">
+    <ClInclude Include="Listado.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Tarjetas.h">

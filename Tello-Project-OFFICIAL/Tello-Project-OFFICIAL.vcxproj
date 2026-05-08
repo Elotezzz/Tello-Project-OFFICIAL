@@ -125,7 +125,7 @@
   <ItemGroup>
     <ClCompile Include="Controladora.cpp" />
     <ClCompile Include="Fecha.cpp" />
-    <ClCompile Include="Listas.cpp" />
+    <ClCompile Include="Listado.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Tablero.cpp" />
     <ClCompile Include="Tarjetas.cpp" />
@@ -135,7 +135,7 @@
   <ItemGroup>
     <ClInclude Include="Controladora.h" />
     <ClInclude Include="Fecha.h" />
-    <ClInclude Include="Listas.h" />
+    <ClInclude Include="Listado.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Tablero.h" />
     <ClInclude Include="Tarjetas.h" />

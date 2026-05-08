@@ -1,6 +1,6 @@
 #include "Tarjetas.h"
 
-Tarjeta::Tarjeta() : prioridad(Baja) {}
+Tarjeta::Tarjeta() : nombre(""), id(""), descripcion(""), prioridad(Baja), siguiente(nullptr) {}
 
 Tarjeta::Tarjeta(std::string nombre, std::string id, std::string descripcion, Prioridad prioridad, Fecha fecha)
     : nombre(nombre), id(id), descripcion(descripcion), prioridad(prioridad), fecha(fecha), siguiente(nullptr) {
