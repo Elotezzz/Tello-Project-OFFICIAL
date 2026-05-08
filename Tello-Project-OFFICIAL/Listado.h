@@ -2,13 +2,13 @@
 #include <string>
 #include <iostream>
 #include "Tarjetas.h"
-#include "ListaEnlazada.h"
+#include "GestionTarjeta.h"
 
 class Listado
 {
 private:
     std::string nombre;
-    ListaEnlazada<Tarjeta>* tarjetas;
+    ListaEnlazadaTarjeta<Tarjeta>* tarjetas;
     Listado* siguiente;
 
 public:

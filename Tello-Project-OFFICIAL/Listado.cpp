@@ -1,8 +1,8 @@
 #include "Listado.h"
 
-Listado::Listado() : nombre(""), tarjetas(new ListaEnlazada<Tarjeta>()), siguiente(nullptr) {}
+Listado::Listado() : nombre(""), tarjetas(new ListaEnlazadaTarjeta<Tarjeta>()), siguiente(nullptr) {}
 
-Listado::Listado(std::string nombre) : nombre(nombre), tarjetas(new ListaEnlazada<Tarjeta>()), siguiente(nullptr) {}
+Listado::Listado(std::string nombre) : nombre(nombre), tarjetas(new ListaEnlazadaTarjeta<Tarjeta>()), siguiente(nullptr) {}
 
 Listado::~Listado() {
     delete tarjetas;

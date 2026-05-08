@@ -16,7 +16,10 @@
     <Filter Include="Controladora">
       <UniqueIdentifier>{ff5297ad-467f-4f27-b0e9-324bc0c473d1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Menu">
+    <Filter Include="Gestion">
+      <UniqueIdentifier>{106106f0-e752-44ec-8291-63b483216f41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SubClases">
       <UniqueIdentifier>{e33aeec5-4320-4f2e-9446-0e855eceb701}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -28,7 +31,7 @@
       <Filter>Controladora</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
-      <Filter>Menu</Filter>
+      <Filter>SubClases</Filter>
     </ClCompile>
     <ClCompile Include="Usuario.cpp">
       <Filter>Archivos de encabezado</Filter>
@@ -43,7 +46,7 @@
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
     <ClCompile Include="Fecha.cpp">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>SubClases</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,7 +54,7 @@
       <Filter>Controladora</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
-      <Filter>Menu</Filter>
+      <Filter>SubClases</Filter>
     </ClInclude>
     <ClInclude Include="Usuario.h">
       <Filter>Archivos de encabezado</Filter>
@@ -65,8 +68,17 @@
     <ClInclude Include="Tarjetas.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="gestionListas.h">
+      <Filter>Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="gestionTablero.h">
+      <Filter>Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="GestionTarjeta.h">
+      <Filter>Gestion</Filter>
+    </ClInclude>
     <ClInclude Include="Fecha.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>SubClases</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

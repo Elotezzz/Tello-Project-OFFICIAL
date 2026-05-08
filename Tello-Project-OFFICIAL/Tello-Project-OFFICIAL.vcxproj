@@ -137,7 +137,7 @@
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="gestionListas.h" />
     <ClInclude Include="gestionTablero.h" />
-    <ClInclude Include="ListaEnlazada.h" />
+    <ClInclude Include="GestionTarjeta.h" />
     <ClInclude Include="Listado.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Tablero.h" />

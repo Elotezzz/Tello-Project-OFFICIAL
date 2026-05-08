@@ -14,7 +14,7 @@ public:
 
 // Lista Enlazada
 template <typename T>
-class ListaEnlazada {
+class ListaEnlazadaTarjeta {
 private:
 	Nodo<T>* head;
 	int length;
@@ -40,9 +40,9 @@ private:
 
 public:
 	// Constructor
-	ListaEnlazada() : head(nullptr), length(0) {}
+	ListaEnlazadaTarjeta() : head(nullptr), length(0) {}
 	// Destructor
-	~ListaEnlazada() {
+	~ListaEnlazadaTarjeta() {
 		Nodo<T>* aux = head;
 		Nodo<T>* aux2;
 		// Este código hace que el puntero aux, salte de nodo en nodo hasta eliminar el último
