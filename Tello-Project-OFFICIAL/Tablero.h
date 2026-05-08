@@ -9,6 +9,7 @@ private:
     std::string nombre;
     Listado* cabeza;
     int cantidad;
+    Tablero* siguiente;
 
 public:
     Tablero();
@@ -24,4 +25,7 @@ public:
     void eliminarListado(std::string nombre);
     Listado* buscarListado(std::string nombre);
     void mostrarListados();
+    Tablero* getSiguiente();
+    void setSiguiente(Tablero* siguiente);
+	void mostrarNombre();
 };
