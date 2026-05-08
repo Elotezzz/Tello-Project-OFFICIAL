@@ -66,33 +66,33 @@ inline int menuTablero() {
 int main()
 {
 	int opc;
-	Usuario u;
+	//Usuario u;
 
-	const char* opcionesU[] = { "Iniciar sesion", "Registrarse"};
-	Menu menuUsuario("BIENVENIDO A TELLO", opcionesU, 2);
-	do
-	{
-		opc = menuUsuario.mostrarMenu();
-		switch (opc) {
-		case 0:
+	//const char* opcionesU[] = { "Iniciar sesion", "Registrarse"};
+	//Menu menuUsuario("BIENVENIDO A TELLO", opcionesU, 2);
+	//do
+	//{
+	//	opc = menuUsuario.mostrarMenu();
+	//	switch (opc) {
+	//	case 0:
 
-			//FALTA AGREGAR ESTA FUNCIONALIDAD QUE ES DE QUE EL USUARIO SOLO 
-			// PUEDE VER LOS TABLEROS Q HA CREADO O LOS QUE LE HAN COMPARTIDO
-			break;
-		case 1:
-			system("cls");
-			cout << "Ingrese su nombre: ";
-			cin >> u.nombre;
-			cout << "Ingrese su password: ";
-			cin >> u.password;
-			cout << "Ingrese su correo: ";
-			cin >> u.correo;
-			ofstream archivoOut("Usuarios.txt", ios::app);
-			u.guardar(archivoOut);
-			archivoOut.close();
-			break;
-		}
-	} while (opc!=1);
+	//		//FALTA AGREGAR ESTA FUNCIONALIDAD QUE ES DE QUE EL USUARIO SOLO 
+	//		// PUEDE VER LOS TABLEROS Q HA CREADO O LOS QUE LE HAN COMPARTIDO
+	//		break;
+	//	case 1:
+	//		system("cls");
+	//		cout << "Ingrese su nombre: ";
+	//		cin >> u.nombre;
+	//		cout << "Ingrese su password: ";
+	//		cin >> u.password;
+	//		cout << "Ingrese su correo: ";
+	//		cin >> u.correo;
+	//		ofstream archivoOut("Usuarios.txt", ios::app);
+	//		u.guardar(archivoOut);
+	//		archivoOut.close();
+	//		break;
+	//	}
+	//} while (opc!=1);
 	
 
 	const char* opciones[] = { "Crear Tablero", "Ver Tablero", "Eliminar Tablero", "Seleccionar Tablero", "Salir" };
