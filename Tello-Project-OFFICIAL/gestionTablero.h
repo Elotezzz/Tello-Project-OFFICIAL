@@ -223,5 +223,41 @@ public:
 		NodeTablero<T>* ultimo = NodeAt(length - 1);
 		return ultimo != nullptr ? ultimo->data : -1;
 	}
+
+	void eliminarPorNombre(std::string nombre) {
+		if (cabeza == nullptr) return;
+		if (cabeza->data.getNombre() == nombre) //En caso que el 
+		{
+			NodeTablero<T>* aux = cabeza;
+			cabeza = cabeza->siguiente;
+			if (cabeza != nullptr)
+			{
+				cabeza->anterior = nullptr;
+			}
+			delete aux;
+			length--;
+			return;
+		}
+		NodeTablero<T>* actual = cabeza;
+		while (actual != nullptr && actual->data.getNombre() != nombre) {
+			actual = actual->siguiente;
+		}
+		if (actual == nullptr)
+		{
+			std::cout << "No se encontro el tablero a eliminar" << std::endl;
+			return;
+		}
+		NodeTablero<T>* anterior = actual->anterior;     //En esta parte usamos IA que nos explique bien como hacer la conexion de los nodos
+		NodeTablero<T>* siguiente = actual->siguiente;
+
+		anterior->siguiente = siguiente;
+		if (siguiente != nullptr)
+		{
+			siguiente->anterior = anterior;
+		}
+		delete actual;
+
+		length--;
+	}
 };
 
