@@ -18,7 +18,6 @@ private:
     std::string descripcion;
     Prioridad prioridad;
     Fecha fecha;
-    Tarjeta* siguiente;
 
 public:
     Tarjeta();
@@ -30,13 +29,18 @@ public:
     std::string getDescripcion() const;
     Prioridad getPrioridad() const;
     Fecha getFecha() const;
-    Tarjeta* getSiguiente();
 
     void setNombre(std::string nombre);
     void setId(std::string id);
     void setDescripcion(std::string descripcion);
     void setPrioridad(Prioridad prioridad);
     void setFecha(Fecha fecha);
-    void setSiguiente(Tarjeta* siguiente);
     void mostrarDatos();
+    friend std::ostream& operator<<(std::ostream& os, const Tarjeta& t) {
+        os << "[" << t.id << "] Nombre: " << t.nombre
+            << " | Prioridad: " << t.prioridad
+            << " | Fecha: " << t.fecha.toString()
+            << " | " << t.descripcion;
+        return os;
+    }
 };

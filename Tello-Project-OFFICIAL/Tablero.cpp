@@ -1,8 +1,8 @@
 #include "Tablero.h"
 
-Tablero::Tablero() : nombre(""), cabeza(nullptr), cantidad(0), siguiente(nullptr) {}
+Tablero::Tablero() : nombre(""), cabeza(nullptr), cantidad(0) {}
 
-Tablero::Tablero(std::string nombre) : nombre(nombre), cabeza(nullptr), cantidad(0), siguiente(nullptr) {}
+Tablero::Tablero(std::string nombre) : nombre(nombre), cabeza(nullptr), cantidad(0){}
 
 Tablero::~Tablero() {}
 
@@ -55,10 +55,3 @@ void Tablero::mostrarListados() {
         actual = actual->getSiguiente();
     }
 }
-
-void Tablero::mostrarNombre() {
-	std::cout << "Tablero: " << nombre << std::endl;
-}
-
-Tablero* Tablero::getSiguiente() { return siguiente; }
-void Tablero::setSiguiente(Tablero* siguiente) { this->siguiente = siguiente; }
