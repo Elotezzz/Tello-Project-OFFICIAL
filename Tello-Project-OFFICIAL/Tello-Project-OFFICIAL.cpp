@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <windows.h>
 #include "Menu.h"
+#include "Usuario.h"
 
 using namespace std;
 
@@ -32,8 +33,6 @@ inline int menuLista() {
 	}
 	return opcL;
 }
-
-
 inline int menuTablero() {
 	const char* opcionesCrear[] = { "Agregar Miembros", "Ver Listas", "Crear lista", "Eliminar Lista",
 				"Seleccionar Lista", "Ordenar Lista", "Volver" };
@@ -67,11 +66,17 @@ int main()
 {
 	int opc;
 
+	//CREAR USUARIO ====
+	ofstream archivoOut("Usuarios.txt");
+
+
+
+	// =================
+
 	//CREAR MENU =======
 	const char* opciones[] = { "Crear Tablero", "Ver Tablero", "Eliminar Tablero", "Seleccionar Tablero", "Salir" };
 	Menu menuPrincipal("TELLO", opciones, 5);
 	//==================
-
 	do {
 		opc = menuPrincipal.mostrarMenu();
 		switch (opc) {

@@ -13,7 +13,7 @@ int Listado::getCantidad() const { return tarjetas->Length(); }
 Listado* Listado::getSiguiente() { return siguiente; }
 
 void Listado::setNombre(std::string nombre) { this->nombre = nombre; }
-void Listado::setSiguiente(Listado* siguiente) { this->siguiente = siguiente; }
+
 
 void Listado::agregarTarjeta(Tarjeta tarjeta) {
     tarjetas->AddLast(tarjeta);
