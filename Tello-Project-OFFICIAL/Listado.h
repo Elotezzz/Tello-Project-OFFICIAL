@@ -21,7 +21,6 @@ public:
     Listado* getSiguiente();
 
     void setNombre(std::string nombre);
-    void setSiguiente(Listado* siguiente);
 
     void agregarTarjeta(Tarjeta tarjeta);
     void eliminarTarjeta(int pos);

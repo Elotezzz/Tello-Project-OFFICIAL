@@ -2,7 +2,7 @@
 
 Tablero::Tablero() : nombre(""), cabeza(nullptr), cantidad(0) {}
 
-Tablero::Tablero(std::string nombre) : nombre(nombre), cabeza(nullptr), cantidad(0){}
+Tablero::Tablero(std::string nombre) : nombre(nombre), cabeza(nullptr), cantidad(0) {}
 
 Tablero::~Tablero() {}
 
@@ -12,7 +12,6 @@ int Tablero::getCantidad() const { return cantidad; }
 void Tablero::setNombre(std::string nombre) { this->nombre = nombre; }
 
 void Tablero::agregarListado(Listado* listado) {
-    listado->setSiguiente(cabeza);
     cabeza = listado;
     cantidad++;
 }
@@ -26,8 +25,7 @@ void Tablero::eliminarListado(std::string nombre) {
             if (anterior == nullptr)
                 cabeza = actual->getSiguiente();
             else
-                anterior->setSiguiente(actual->getSiguiente());
-            delete actual;
+                delete actual;
             cantidad--;
             return;
         }
