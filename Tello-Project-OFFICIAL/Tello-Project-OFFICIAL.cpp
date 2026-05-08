@@ -3,6 +3,7 @@
 #include <windows.h>
 #include "Menu.h"
 #include "Usuario.h"
+#include "Tablero.h"
 
 using namespace std;
 
