@@ -28,4 +28,6 @@ public:
         os << "Tablero: " << t.nombre << " (" << t.listados->getLength() << " listados)";
         return os;
     }
+    void crearLista();
+    void eliminarLista();
 };

@@ -3,7 +3,8 @@
 #include <iostream>
 #include "Tablero.h"
 #include "gestionTablero.h"
-
+#include "Listado.h"
+#include "gestionListas.h"
 class Controladora
 {
 private:
@@ -19,4 +20,5 @@ public:
     void eliminarTablero(std::string nombre);
     Tablero* buscarTablero(std::string nombre);
     void mostrarTableros();
+    void crearTablero();
 };

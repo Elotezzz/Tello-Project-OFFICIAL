@@ -1,7 +1,13 @@
 #include "Tablero.h"
 
 Tablero::Tablero() : nombre(""), listados(new LinkedListListados<Listado>()) {}
-Tablero::Tablero(std::string nombre) : nombre(nombre), listados(new LinkedListListados<Listado>()) {}
+Tablero::Tablero(std::string nombre) : nombre(nombre), listados(new LinkedListListados<Listado>())
+{
+    // Estas serian las listas predeterminadas
+    listados->agregar(Listado("Lista de tareas"));
+    listados->agregar(Listado("En proceso"));
+    listados->agregar(Listado("Hecho"));
+}
 Tablero::~Tablero() { delete listados; }
 
 std::string Tablero::getNombre() const { return nombre; }
@@ -29,4 +35,29 @@ Listado* Tablero::buscarListado(std::string nombre) {
 void Tablero::mostrarListados() {
     std::cout << "=== Tablero: " << nombre << " (" << getCantidad() << " listados) ===" << std::endl;
     listados->imprimir();
+}
+
+void Tablero::crearLista() {
+    std::string nombre;
+    std::cout<< "Ingrese el nombre de la lista: ";
+    std::getline(std::cin, nombre);
+
+    if (buscarListado(nombre) != nullptr)
+    {
+        std::cout<< "Ya existe una lista con ese nombre\n";
+        return;
+    }
+    Listado nuevo(nombre);
+    agregarListado(nuevo);
+
+    std::cout<< "Lista creada correctamente\n";
+}
+void Tablero::eliminarLista()
+{
+    std::string nombre;
+    std::cout<< "Ingrese el nombre de la lista a eliminar: ";
+    std::getline(std::cin, nombre);
+
+    eliminarListado(nombre);
+    std::cout<< "Lista eliminada correctamente\n";
 }

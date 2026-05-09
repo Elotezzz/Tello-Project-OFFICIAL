@@ -1,11 +1,12 @@
 #include "Tarjetas.h"
 
 Tarjeta::Tarjeta() : nombre(""), id(""), descripcion(""), prioridad(Baja) {}
-
+Tarjeta::Tarjeta(std::string nombre)
+    : nombre(nombre), id(""), descripcion(""), prioridad(Baja), fecha() {
+}
 Tarjeta::Tarjeta(std::string nombre, std::string id, std::string descripcion, Prioridad prioridad, Fecha fecha)
     : nombre(nombre), id(id), descripcion(descripcion), prioridad(prioridad), fecha(fecha) {
 }
-
 Tarjeta::~Tarjeta() {}
 
 std::string Tarjeta::getNombre() const { return nombre; }

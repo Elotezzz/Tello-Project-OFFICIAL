@@ -4,26 +4,31 @@
 #include "Menu.h"
 #include "Usuario.h"
 #include "Tablero.h"
-
+#include "Controladora.h"
+#include "Listado.h"
 using namespace std;
 
-inline int menuLista() {
+inline int menuLista(Listado* listado) {
 	const char* opcionesL[] = { "Crear Tarjeta", "Ver Tarjetas", "Mover Tarjeta", "Eliminar Tarjeta",
 				"Seleccionar Tarjeta", "Filtrar Tarjetas", "Volver" };
+	Tablero tablero;
 	Menu menuCrear("LISTA", opcionesL, 7);
 	int opcL = menuCrear.mostrarMenu();
 	switch (opcL) {
 	case 0:
+		listado->crearTarjeta();
 		break;
 	case 1:
+		listado->mostrarTarjetas();
 		break;
 	case 2:
 		break;
 	case 3:
+		listado->eliminarTarjetaPorNombre();
 		break;
 	case 4: {
 
-		//CREAR TARJETA
+		//SELECCIONAR TARJETA
 
 		break;
 	}
@@ -34,7 +39,7 @@ inline int menuLista() {
 	}
 	return opcL;
 }
-inline int menuTablero() {
+inline int menuTablero(Tablero* tablero) {
 	const char* opcionesT[] = { "Agregar Miembros", "Ver Listas", "Crear lista", "Eliminar Lista",
 				"Seleccionar Lista", "Ordenar Lista", "Volver" };
 	Menu menuCrear("TABLERO", opcionesT, 7);
@@ -43,16 +48,29 @@ inline int menuTablero() {
 	case 0:
 		break;
 	case 1:
+		tablero->mostrarListados();
 		break;
 	case 2:
+		tablero->crearLista();
 		break;
 	case 3:
+		tablero->eliminarLista();
 		break;
 	case 4: {
 
 		//SELECCIONAR LISTA
-
-		menuLista();
+		std::string nombre;
+		std::cout << "Ingrese el nombre del tablero: ";
+		std::cin >> nombre;
+		Listado* lista = tablero->buscarListado(nombre);
+		if (lista != nullptr)
+		{
+			menuLista(lista);
+		}
+		else
+		{
+			std::cout << "Lista no encontrada\n";
+		}
 		break;
 	}
 	case 5:
@@ -67,7 +85,7 @@ int main()
 {
 	int opc;
 	Usuario u;
-
+	Controladora controladora;
 	const char* opcionesU[] = { "Iniciar sesion", "Registrarse"};
 	Menu menuUsuario("BIENVENIDO A TELLO", opcionesU, 2);
 	do
@@ -126,26 +144,48 @@ int main()
 		}
 	} while (opc!=1);
 
-	const char* opciones[] = { "Crear Tablero", "Ver Tablero", "Eliminar Tablero", "Seleccionar Tablero", "Salir" };
+	const char* opciones[] = { "Crear Tablero", "Ver Tableros", "Eliminar Tablero", "Seleccionar Tablero", "Salir" };
 	Menu menuPrincipal("TELLO", opciones, 5);
 	do {
 		opc = menuPrincipal.mostrarMenu();
 		switch (opc) {
 		case 0:
+			controladora.crearTablero();
 			break;
 		case 1:
+			controladora.mostrarTableros();
 			break;
 		case 2:
+		{
+			string nombre;
+
+			cout << "Ingrese el nombre del tablero a eliminar: ";
+			cin >> nombre;
+			controladora.eliminarTablero(nombre);
+			break;
+		}
 			break;
 		case 3: {
+			//SELECCIONAR TABLERO  
+			std::string nombre;
+			std::cout << "Ingrese el nombre del tablero: ";
+			std::cin >> nombre;
 
-			//SELECCIONAR TABLERO
-			menuTablero();
-			break;
+			Tablero* tablero = controladora.buscarTablero(nombre);
+
+			if (tablero != nullptr)
+			{
+				menuTablero(tablero);
 			}
+			else
+			{
+				std::cout << "Tablero no encontrado\n";
+			}
+		}
+			break;
 		case 4:
 			break;
 		}
-	} while (opc != 4);
+	} while (opc != 5);
 	return 0;
 }

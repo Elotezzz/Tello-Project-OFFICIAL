@@ -27,3 +27,15 @@ void Controladora::mostrarTableros() {
     std::cout << "=== Sistema (" << getCantidad() << " tableros) ===" << std::endl;
     tableros->imprimir();
 }
+void Controladora::crearTablero() {
+	std::string nombre;
+	std::cout << "Ingrese el nombre del nuevo tablero: ";
+	std::cin >> nombre;
+	if (buscarTablero(nombre) != nullptr) {
+		std::cout << "Ya existe un tablero con ese nombre.\n";
+		return;
+	}
+	Tablero nuevoTablero(nombre);
+	agregarTablero(nuevoTablero);
+	std::cout << "Tablero '" << nombre << "' creado exitosamente.\n";
+}
