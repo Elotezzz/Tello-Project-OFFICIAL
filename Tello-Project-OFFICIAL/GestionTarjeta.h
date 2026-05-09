@@ -247,7 +247,7 @@ public:
 		{
 			swapped = false;
 			Nodo<T>* actual = head;
-			while (actual->next = nullptr)
+			while (actual->next != nullptr)
 			{
 				if (actual->data->getPrioridad() < actual->next->data->getPrioridad())
 				{
