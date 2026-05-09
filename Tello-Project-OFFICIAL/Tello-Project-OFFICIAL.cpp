@@ -125,7 +125,6 @@ int main()
 			break;
 		}
 	} while (opc!=1);
-	
 
 	const char* opciones[] = { "Crear Tablero", "Ver Tablero", "Eliminar Tablero", "Seleccionar Tablero", "Salir" };
 	Menu menuPrincipal("TELLO", opciones, 5);
