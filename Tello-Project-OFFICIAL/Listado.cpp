@@ -15,7 +15,7 @@ Listado* Listado::getSiguiente() { return siguiente; }
 void Listado::setNombre(std::string nombre) { this->nombre = nombre; }
 
 
-void Listado::agregarTarjeta(Tarjeta tarjeta) {
+void Listado::agregarTarjeta(Tarjeta* tarjeta) {
     tarjetas->AddLast(tarjeta);
 }
 
@@ -53,7 +53,7 @@ void Listado::crearTarjeta() {
         std::cout << "Ya existe una tarjeta con ese nombre\n";
         return;
     }
-    Tarjeta nuevo(nombre);
+    Tarjeta* nuevo = new Tarjeta(nombre);
     agregarTarjeta(nuevo);
 }
 

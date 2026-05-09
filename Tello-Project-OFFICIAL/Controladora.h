@@ -16,7 +16,7 @@ public:
 
     int getCantidad() const;
 
-    void agregarTablero(Tablero tablero);
+    void agregarTablero(Tablero* tablero);
     void eliminarTablero(std::string nombre);
     Tablero* buscarTablero(std::string nombre);
     void mostrarTableros();

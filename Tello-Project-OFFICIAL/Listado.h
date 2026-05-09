@@ -22,7 +22,7 @@ public:
 
     void setNombre(std::string nombre);
 
-    void agregarTarjeta(Tarjeta tarjeta);
+    void agregarTarjeta(Tarjeta* tarjeta);
     void eliminarTarjetaPorPos(int pos);
     void eliminarTarjeta(std::string nombre);
     Tarjeta* buscarTarjeta(int pos);

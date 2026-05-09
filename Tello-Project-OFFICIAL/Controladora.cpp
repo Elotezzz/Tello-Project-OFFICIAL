@@ -6,7 +6,7 @@ Controladora::~Controladora() { delete tableros; }
 
 int Controladora::getCantidad() const { return tableros->getLength(); }
 
-void Controladora::agregarTablero(Tablero tablero) {
+void Controladora::agregarTablero(Tablero* tablero) {
     tableros->agregar(tablero);
 }
 
@@ -26,6 +26,7 @@ Tablero* Controladora::buscarTablero(std::string nombre) {
 void Controladora::mostrarTableros() {
     std::cout << "=== Sistema (" << getCantidad() << " tableros) ===" << std::endl;
     tableros->imprimir();
+	system("pause");
 }
 void Controladora::crearTablero() {
 	std::string nombre;
@@ -35,7 +36,7 @@ void Controladora::crearTablero() {
 		std::cout << "Ya existe un tablero con ese nombre.\n";
 		return;
 	}
-	Tablero nuevoTablero(nombre);
+	Tablero* nuevoTablero = new Tablero(nombre);
 	agregarTablero(nuevoTablero);
 	std::cout << "Tablero '" << nombre << "' creado exitosamente.\n";
 }

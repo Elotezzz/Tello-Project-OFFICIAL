@@ -4,11 +4,11 @@
 template <typename T>
 class Nodo {
 public:
-	T data;
+	T* data;
 	Nodo<T>* next;
 	// Constructor
-	Nodo(T& data) : data(data), next(nullptr) {}
-	Nodo(T& data, Nodo<T>* next) : data(data), next(next) {}
+	Nodo(T* data) : data(data), next(nullptr) {}
+	Nodo(T* data, Nodo<T>* next) : data(data), next(next) {}
 };
 
 // Lista Enlazada
@@ -60,7 +60,7 @@ public:
 		Nodo<T>* aux = head;
 		while (aux != nullptr) {
 			std::string sep = space ? " " : "\n";
-			std::cout << aux->data << sep;
+			std::cout << aux->data->getNombre() << sep;
 			aux = aux->next;
 		}
 		std::cout << std::endl;
@@ -76,13 +76,13 @@ public:
 		return length == 0;
 	}
 
-	void AddFirst(T data) {
+	void AddFirst(T* data) {
 		Nodo<T>* node = new Nodo<T>(data, IsEmpty() ? nullptr : head);
 		head = node;
 		length++;
 	}
 
-	void AddPos(T data, int pos) {
+	void AddPos(T* data, int pos) {
 		// Ubicamos la posición anterior
 		if (pos == 0) // Agrego al inicio
 			AddFirst(data);
@@ -98,7 +98,7 @@ public:
 		length++;
 	}
 
-	void AddLast(T data) {
+	void AddLast(T* data) {
 		Nodo<T>* node = new Nodo<T>(data);
 		if (IsEmpty()) {
 			head = node;
@@ -111,21 +111,21 @@ public:
 		length++;
 	}
 
-	void ModifyFirst(T data) {
+	void ModifyFirst(T* data) {
 		Nodo<T>* currentNode = NodeAt(0);
 		if (currentNode != nullptr) {
 			currentNode->data = data;
 		}
 	}
 
-	void ModifyPos(T data, int pos) {
+	void ModifyPos(T* data, int pos) {
 		Nodo<T>* currentNode = NodeAt(pos);
 		if (currentNode != nullptr) {
 			currentNode->data = data;
 		}
 	}
 
-	void ModifyLast(T data) {
+	void ModifyLast(T* data) {
 		Nodo<T>* currentNode = NodeAt(length - 1);
 		if (currentNode != nullptr) {
 			currentNode->data = data;
@@ -190,19 +190,19 @@ public:
 	T* GetFirst() {
 		Nodo<T>* first = NodeAt(0);
 		if (first == nullptr) return nullptr;
-		return &first->data;
+		return first->data;
 	}
 
 	T* GetPos(int pos) {
 		Nodo<T>* node = NodeAt(pos);
 		if (node == nullptr) return nullptr;
-		return &node->data;
+		return node->data;
 	}
 
 	T* GetLast() {
 		Nodo<T>* last = NodeAt(length - 1);
 		if (last == nullptr) return nullptr;
-		return &last->data;
+		return last->data;
 	}
 
 	void eliminarPorNombre(std::string nombre) {
@@ -212,14 +212,14 @@ public:
 		}
 
 		// Caso especial: es el primero
-		if (head->data.getNombre() == nombre) {
+		if (head->data->getNombre() == nombre) {
 			RemoveFirst();
 			return;
 		}
 
 		// Buscar el nodo anterior al que queremos eliminar
 		Nodo<T>* anterior = head;
-		while (anterior->next != nullptr && anterior->next->data.getNombre() != nombre) {
+		while (anterior->next != nullptr && anterior->next->data->getNombre() != nombre) {
 			anterior = anterior->next;
 		}
 

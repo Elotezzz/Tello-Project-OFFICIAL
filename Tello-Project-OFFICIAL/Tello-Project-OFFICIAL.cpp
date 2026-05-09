@@ -164,7 +164,7 @@ int main()
 			controladora.eliminarTablero(nombre);
 			break;
 		}
-			break;
+		
 		case 3: {
 			//SELECCIONAR TABLERO  
 			std::string nombre;
