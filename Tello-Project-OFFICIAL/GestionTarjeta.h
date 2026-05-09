@@ -140,7 +140,6 @@ public:
 		}
 		Nodo<T>* aux = head;
 		head = head->next;
-		delete aux->data;
 		delete aux;
 		length--;
 	}
@@ -158,7 +157,6 @@ public:
 			if (nodeBefore != nullptr && nodeErase != nullptr) {
 				nodeBefore->next = nodeErase->next;
 				// Podemos eliminar con tranquilidad el nodo elegido
-				delete nodeErase->data;
 				delete nodeErase;
 				length--;
 			}
@@ -185,7 +183,6 @@ public:
 				// sea eliminado.
 				Nodo<T>* nodeLast = nodePreviousLast->next;
 				nodePreviousLast->next = nullptr;
-				delete nodeLast->data;
 				delete nodeLast;
 				length--;
 			}
@@ -237,7 +234,6 @@ public:
 		// Eliminar el nodo encontrado
 		Nodo<T>* aEliminar = anterior->next;
 		anterior->next = aEliminar->next;
-		delete aEliminar->data;
 		delete aEliminar;
 		length--;
 	}

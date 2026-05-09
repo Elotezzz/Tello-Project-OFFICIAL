@@ -3,13 +3,14 @@
 #include <iostream>
 #include "Tarjetas.h"
 #include "GestionTarjeta.h"
-
+#include "HistorialTarjeta.h"
 class Listado
 {
 private:
     std::string nombre;
     ListaEnlazadaTarjeta<Tarjeta>* tarjetas;
     Listado* siguiente;
+    Pila<Accion> historial;
 
 public:
     Listado();
@@ -34,4 +35,5 @@ public:
     Tarjeta* buscarPorNombreTarjeta(std::string nombre);
 	void crearTarjeta();
     void eliminarTarjetaPorNombre();
+    void deshacer();
 };

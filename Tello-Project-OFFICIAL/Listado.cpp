@@ -53,7 +53,10 @@ void Listado::crearTarjeta() {
         std::cout << "Ya existe una tarjeta con ese nombre\n";
         return;
     }
-    agregarTarjeta(new Tarjeta(nombre));
+    Tarjeta* nueva = new Tarjeta(nombre);
+    agregarTarjeta(nueva);
+
+    historial.push(Accion(CREAR, nueva));
     std::cout << "Tarjeta creada correctamente\n";
 }
 
@@ -61,7 +64,29 @@ void Listado::eliminarTarjetaPorNombre() {
     std::string nombre;
     std::cout << "Ingrese el nombre de la tarjeta a eliminar: ";
     std::getline(std::cin, nombre);
-
+    Tarjeta* t = buscarPorNombreTarjeta(nombre);
+    historial.push(Accion(ELIMINAR, t));
     eliminarTarjeta(nombre);
+
     std::cout << "Tarjeta eliminada correctamente\n";
+}
+
+void Listado::deshacer() {
+
+    if (historial.isEmpty()) {
+        std::cout << "No hay acciones para deshacer\n";
+        return;
+    }
+    Accion ultima = historial.top();
+    historial.pop();
+    if (ultima.getTipo() == CREAR)
+    {
+        eliminarTarjeta(ultima.getTarjeta()->getNombre());
+        std::cout << "Se deshizo la creacion\n";
+    }
+    else if (ultima.getTipo() == ELIMINAR)
+    {
+        agregarTarjeta(ultima.getTarjeta());
+        std::cout << "Se deshizo la eliminacion\n";
+    }
 }

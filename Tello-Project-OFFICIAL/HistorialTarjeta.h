@@ -1,21 +1,34 @@
 ﻿#pragma once
 #include <iostream>
+#include "Tarjetas.h"
 
+enum TipoAccion
+{
+	CREAR,
+	ELIMINAR
+};
 class Accion
 {
 private:
-	std::string descripcion;
+	TipoAccion tipo;
+	Tarjeta* tarjeta;
 public:
-	Accion() {};
-	Accion(std::string descripcion) : descripcion(descripcion) {};
-
-	std::string getDescripcion() const { return descripcion; }
+	Accion() {
+		this->tipo = CREAR;
+		this->tarjeta = nullptr;	
+	}
+	Accion(TipoAccion tipo, Tarjeta* tarjeta){
+		this->tipo = tipo;
+		this->tarjeta = tarjeta;
+	};
+	TipoAccion getTipo() { return tipo; }
+	Tarjeta* getTarjeta() { return tarjeta; }
 };
 
 template <typename T>
 class NodoPila {
 public:
-	int dato;
+	T dato;
 	NodoPila<T>* siguiente;
 	NodoPila(T valor) {
 		dato = valor;
@@ -32,7 +45,13 @@ public:
 		cima = nullptr;
 	}
 
-	void push(int valor) {
+	~Pila() {
+		while (!isEmpty()) {
+			pop();
+		}
+	}
+
+	void push(T valor) {
 		NodoPila<T>* nuevo = new NodoPila<T>(valor);
 		nuevo->siguiente = cima;
 		cima = nuevo;
@@ -45,12 +64,13 @@ public:
 		delete temp;
 	}
 
-	int top() {
-		return cima ? cima->dato : -1;
+	T top() {
+		if (cima == nullptr)
+			return T();
+		return cima->dato;
 	}
 
 	bool isEmpty() {
 		return cima == nullptr;
 	}
 };
-//🔥 ya esta tu codigo hecho tio maucho clauderon
