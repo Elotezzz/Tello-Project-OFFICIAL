@@ -1,10 +1,8 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include "Tablero.h"
 #include "gestionTablero.h"
-#include "Listado.h"
-#include "gestionListas.h"
+
 class Controladora
 {
 private:

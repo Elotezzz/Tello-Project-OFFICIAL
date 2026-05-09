@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 #include "Tablero.h"
 
 template <typename T>
@@ -42,6 +43,7 @@ public:
         NodeTablero<T>* aux2;
         while (aux != nullptr) {
             aux2 = aux->next;
+            delete aux->data;
             delete aux;
             aux = aux2;
         }
@@ -97,6 +99,7 @@ public:
         head = head->next;
         if (head != nullptr)
             head->prev = nullptr;
+        delete aux->data;
         delete aux;
         length--;
     }
@@ -115,6 +118,7 @@ public:
                 nodoAnterior->next = nodoEliminar->next;
                 if (nodoEliminar->next != nullptr)
                     nodoEliminar->next->prev = nodoAnterior;
+                delete nodoEliminar->data;
                 delete nodoEliminar;
                 length--;
             }
@@ -127,6 +131,7 @@ public:
             return;
         }
         if (length == 1) {
+            delete head->data;
             delete head;
             head = nullptr;
             length--;
@@ -179,6 +184,7 @@ public:
         anterior->next = aEliminar->next;
         if (aEliminar->next != nullptr)
             aEliminar->next->prev = anterior;
+        delete aEliminar->data;
         delete aEliminar;
         length--;
     }
