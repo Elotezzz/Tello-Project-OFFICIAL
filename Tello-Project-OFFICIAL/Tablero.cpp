@@ -1,12 +1,12 @@
 #include "Tablero.h"
 
-Tablero::Tablero() : nombre(""), listados(new LinkedListListados<Listado>()) {}
-Tablero::Tablero(std::string nombre) : nombre(nombre), listados(new LinkedListListados<Listado>()) {
+Tablero::Tablero() : nombre(""), listados(new LinkedListListados<Listado>()), miembro(new std::string[10]), cantidadMiembros(0) {}
+Tablero::Tablero(std::string nombre) : nombre(nombre), listados(new LinkedListListados<Listado>()), miembro(new std::string[10]), cantidadMiembros(0) {
     listados->agregar(new Listado("Lista de tareas"));
     listados->agregar(new Listado("En proceso"));
     listados->agregar(new Listado("Hecho"));
 }
-Tablero::~Tablero() { delete listados; }
+Tablero::~Tablero() { delete listados; delete[] miembro; }
 
 std::string Tablero::getNombre() const { return nombre; }
 int Tablero::getCantidad() const { return listados->getLength(); }
@@ -31,9 +31,19 @@ Listado* Tablero::buscarListado(std::string nombre) {
 }
 
 void Tablero::mostrarListados() {
-    std::cout << "=== Tablero: " << nombre << " (" << getCantidad() << " listados) ===" << std::endl;
+    std::cout << "=== Tablero: " << nombre << " (" << getCantidad() << " listados) ===\n";
     listados->imprimir();
 }
+
+void Tablero::agregarMiembro(std::string nombre) {
+
+
+}
+
+void Tablero::mostrarMiembros() const{
+
+}
+
 
 void Tablero::crearLista() {
     std::string nombre;

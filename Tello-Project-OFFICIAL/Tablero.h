@@ -9,6 +9,8 @@ class Tablero
 private:
     std::string nombre;
     LinkedListListados<Listado>* listados;
+    std::string* miembro;
+    int cantidadMiembros;
 
 public:
     Tablero();
@@ -28,6 +30,10 @@ public:
         os << "Tablero: " << t.nombre << " (" << t.listados->getLength() << " listados)";
         return os;
     }
+
+	void agregarMiembro(std::string miembro);
+	void mostrarMiembros() const;
+
     void crearLista();
     void eliminarLista();
 };
