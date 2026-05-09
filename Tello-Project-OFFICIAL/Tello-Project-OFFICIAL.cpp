@@ -24,13 +24,18 @@ inline int menuLista(Listado* listado) {
 			system("pause");
 			break;
 		case 2:
+
+			//MOVER TARJETAS A OTRAS LISTAS
+
 			break;
 		case 3:
 			listado->eliminarTarjetaPorNombre();
 			break;
 		case 4:
+			//SELECCIONAR TARJETA
 			break;
 		case 5:
+			//FILTRAR POR PRIORIDAD 
 			break;
 		case 6:
 			break;
@@ -47,6 +52,7 @@ inline int menuTablero(Tablero* tablero) {
 		opcT = menuCrear.mostrarMenu();
 		switch (opcT) {
 		case 0:
+			//LEER TXT Y QUE AÑADI UN USUARIO AL TABLERO
 			break;
 		case 1:
 			tablero->mostrarListados();
@@ -70,6 +76,9 @@ inline int menuTablero(Tablero* tablero) {
 			break;
 		}
 		case 5:
+
+			//ALGORITMO DE ORDENAMIENTO POR ABECEDARIO 
+
 			break;
 		case 6:
 			break;
