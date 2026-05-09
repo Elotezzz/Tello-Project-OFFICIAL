@@ -36,12 +36,18 @@ void Tablero::mostrarListados() {
 }
 
 void Tablero::agregarMiembro(std::string nombre) {
-
-
+    for (int i = 0; i < cantidadMiembros; i++) {
+        if (miembro[i] == nombre) {
+            std::cout << nombre << " ya es miembro de este tablero\n";
+            return;
+        }
+    }
+    miembro[cantidadMiembros++] = nombre;
 }
 
 void Tablero::mostrarMiembros() const{
-
+    for (int i = 0; i < cantidadMiembros; i++)
+        std::cout << "  " << i + 1 << " " << miembro[i] << "\n";
 }
 
 

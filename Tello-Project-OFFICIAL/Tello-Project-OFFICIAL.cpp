@@ -8,54 +8,6 @@
 #include "Listado.h"
 using namespace std;
 
-inline int menuTarjeta(Tarjeta* tarjeta) {
-	const char* opcionesT[] = { "Ver datos", "Editar nombre", "Editar descripcion",
-		"Editar prioridad", "Editar fecha", "Agregar comentario",
-		"Agregar item checklist", "Marcar item checklist", "Volver" };
-	Menu menuCrear("TARJETA", opcionesT, 9);
-	int opcT;
-	do {
-		opcT = menuCrear.mostrarMenu();
-		switch (opcT) {
-		case 0:
-			tarjeta->mostrarDatos();
-			system("pause");
-			break;
-		case 1:
-			tarjeta->editarNombre();
-			break;
-		case 2:
-			tarjeta->editarDescripcion();
-			break;
-		case 3:
-			tarjeta->editarPrioridad();
-			break;
-		case 4:
-			tarjeta->editarFecha();
-			break;
-		case 5:
-			cin.ignore();
-			tarjeta->agregarComentario();
-			break;
-		case 6:
-			cin.ignore();
-			tarjeta->agregarItemChecklist();
-			break;
-		case 7: {
-			tarjeta->getChecklist().mostrar();
-			std::cout << "Ingrese posicion a marcar: ";
-			int pos;
-			std::cin >> pos;
-			tarjeta->getChecklist().marcarCompletado(pos);
-			break;
-		}
-		case 8:
-			break;
-		}
-	} while (opcT != 8);  // 8 = Volver
-	return opcT;
-}
-
 inline int menuLista(Listado* listado) {
 	const char* opcionesL[] = { "Crear Tarjeta", "Ver Tarjetas", "Mover Tarjeta", "Eliminar Tarjeta",
 				"Seleccionar Tarjeta", "Filtrar Tarjetas", "Deshacer", "Volver" };
@@ -79,17 +31,9 @@ inline int menuLista(Listado* listado) {
 		case 3:
 			listado->eliminarTarjetaPorNombre();
 			break;
-		case 4: {
-			std::string nombre;
-			std::cout << "Ingrese el nombre de la tarjeta: ";
-			std::cin >> nombre;
-			Tarjeta* tarjeta = listado->buscarPorNombreTarjeta(nombre);
-			if (tarjeta != nullptr)
-				menuTarjeta(tarjeta);
-			else
-				std::cout << "Tarjeta no encontrada\n";
+		case 4:
+			//SELECCIONAR TARJETA
 			break;
-		}
 		case 5:
 			//FILTRAR POR PRIORIDAD 
 			break;
@@ -99,7 +43,7 @@ inline int menuLista(Listado* listado) {
 		case 7:
 			break;
 		}
-	} while (opcL != 7);  
+	} while (opcL != 6);  
 	return opcL;
 }
 inline int menuTablero(Tablero* tablero) {
@@ -112,6 +56,7 @@ inline int menuTablero(Tablero* tablero) {
 		switch (opcT) {
 		case 0:
 			//LEER TXT Y QUE AÑADI UN USUARIO AL TABLERO
+
 			break;
 		case 1:
 			tablero->mostrarListados();
