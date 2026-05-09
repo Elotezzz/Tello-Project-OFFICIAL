@@ -39,3 +39,32 @@ void Controladora::crearTablero() {
 	agregarTablero(nuevoTablero);
 	std::cout << "Tablero '" << nombre << "' creado exitosamente.\n";
 }
+void Controladora::ordenarTableros() {
+    int n = tableros->getLength();
+    if (n <= 1) {
+        std::cout << "No hay suficientes tableros para ordenar\n";
+        return;
+    }
+
+    Tablero** arr = new Tablero * [n];
+    for (int i = 0; i < n; i++)
+        arr[i] = tableros->GetPos(i);
+
+    // Insertion Sort
+    for (int i = 1; i < n; i++) {
+        Tablero* key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j]->getNombre() > key->getNombre()) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+
+    // Reenlazar sin destruir
+    for (int i = 0; i < n; i++)
+        tableros->setDataPos(arr[i], i);
+
+    delete[] arr;
+    std::cout << "Tableros ordenados alfabeticamente\n";
+}

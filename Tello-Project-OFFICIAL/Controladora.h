@@ -19,4 +19,5 @@ public:
     Tablero* buscarTablero(std::string nombre);
     void mostrarTableros();
     void crearTablero();
+    void ordenarTableros();
 };

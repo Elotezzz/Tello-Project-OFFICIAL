@@ -250,6 +250,11 @@ int main()
 		case 1:
 			system("cls");
 			controladora.mostrarTableros();
+			std::cout << "Ordenar alfabeticamente? (s/n): ";
+			char resp;
+			std::cin >> resp;
+			if (resp == 's' || resp == 'S')
+				controladora.ordenarTableros();
 			_getch();
 			break;
 		case 2:

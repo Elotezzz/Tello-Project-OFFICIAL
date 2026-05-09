@@ -188,4 +188,9 @@ public:
         delete aEliminar;
         length--;
     }
+    void setDataPos(T* data, int pos) {
+        NodeTablero<T>* node = NodeAt(pos);
+        if (node != nullptr)
+            node->data = data;
+    }
 };
