@@ -42,6 +42,12 @@ public:
     void setDescripcion(std::string descripcion);
     void setPrioridad(Prioridad prioridad);
     void setFecha(Fecha fecha);
+    void editarNombre();
+    void editarDescripcion();
+    void editarPrioridad();
+    void editarFecha();
+    void agregarComentario();
+    void agregarItemChecklist();
     void mostrarDatos();
     friend std::ostream& operator<<(std::ostream& os, const Tarjeta& t) {
         os << "[" << t.id << "] Nombre: " << t.nombre

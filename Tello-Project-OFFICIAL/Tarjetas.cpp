@@ -22,6 +22,54 @@ void Tarjeta::setId(std::string id) { this->id = id; }
 void Tarjeta::setDescripcion(std::string descripcion) { this->descripcion = descripcion; }
 void Tarjeta::setPrioridad(Prioridad prioridad) { this->prioridad = prioridad; }
 void Tarjeta::setFecha(Fecha fecha) { this->fecha = fecha; }
+void Tarjeta::editarNombre() {
+    std::cout << "Nuevo nombre: ";
+    std::cin.ignore();
+    std::getline(std::cin, nombre);
+}
+
+void Tarjeta::editarDescripcion() {
+    std::cout << "Nueva descripcion: ";
+    std::cin.ignore();
+    std::getline(std::cin, descripcion);
+}
+
+void Tarjeta::editarPrioridad() {
+    std::cout << "Prioridad (0=Baja, 1=Media, 2=Alta): ";
+    int p;
+    std::cin >> p;
+    if (p >= 0 && p <= 2)
+        prioridad = (Prioridad)p;
+    else
+        std::cout << "Prioridad invalida\n";
+}
+
+void Tarjeta::editarFecha() {
+    int dia, mes, ano;
+    std::cout << "Dia: "; std::cin >> dia;
+    std::cout << "Mes: "; std::cin >> mes;
+    std::cout << "Ano: "; std::cin >> ano;
+    Fecha nueva;
+    if (!nueva.setDia(dia) || !nueva.setMes(mes) || !nueva.setAno(ano))
+        std::cout << "Fecha invalida\n";
+    else
+        fecha = nueva;
+}
+
+void Tarjeta::agregarComentario() {
+    std::string comentario;
+    std::cout << "Comentario: ";
+    std::getline(std::cin, comentario);
+    comentarios.agregar(comentario);
+}
+
+void Tarjeta::agregarItemChecklist() {
+    std::string item;
+    std::cout << "Item: ";
+    std::getline(std::cin, item);
+    checklist.agregar(item);
+}
+
 void Tarjeta::mostrarDatos() {
     std::cout << *this << std::endl;
     std::cout << "Checklist:\n";
