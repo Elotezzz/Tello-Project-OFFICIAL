@@ -48,6 +48,15 @@
     <ClCompile Include="Fecha.cpp">
       <Filter>SubClases</Filter>
     </ClCompile>
+    <ClCompile Include="Comentario.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckList.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
+    <ClCompile Include="Etiquetas.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controladora.h">
@@ -79,6 +88,15 @@
     </ClInclude>
     <ClInclude Include="Fecha.h">
       <Filter>SubClases</Filter>
+    </ClInclude>
+    <ClInclude Include="Comentarior.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckList.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Etiquetas.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
