@@ -26,4 +26,8 @@ public:
     void eliminarTarjeta(int pos);
     Tarjeta* buscarTarjeta(int pos);
     void mostrarTarjetas();
+    friend std::ostream& operator<<(std::ostream& os, const Listado& l) {
+        os << "Listado: " << l.nombre << " (" << l.tarjetas->Length() << " tarjetas)";
+        return os;
+    }
 };
