@@ -164,9 +164,8 @@ inline int menuTablero(Tablero* tablero) {
 			break;
 		}
 		case 5:
-
-			//ALGORITMO DE ORDENAMIENTO POR ABECEDARIO 
-
+			tablero->ordenarListados();
+			_getch();
 			break;
 		case 6:
 			break;

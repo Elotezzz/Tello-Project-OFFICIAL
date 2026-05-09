@@ -36,4 +36,5 @@ public:
 
     void crearLista();
     void eliminarLista();
+    void ordenarListados();
 };

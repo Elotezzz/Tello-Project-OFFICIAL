@@ -73,3 +73,60 @@ void Tablero::eliminarLista()
     eliminarListado(nombre);
     std::cout<< "Lista eliminada correctamente\n";
 }
+
+void merge(Listado** arr, int inicio, int medio, int fin) {
+    int n1 = medio - inicio + 1;
+    int n2 = fin - medio;
+
+    Listado** izq = new Listado * [n1];
+    Listado** der = new Listado * [n2];
+
+    for (int i = 0; i < n1; i++) izq[i] = arr[inicio + i];
+    for (int i = 0; i < n2; i++) der[i] = arr[medio + 1 + i];
+
+    int i = 0, j = 0, k = inicio;
+    while (i < n1 && j < n2) {
+        if (izq[i]->getNombre() <= der[j]->getNombre())
+            arr[k++] = izq[i++];
+        else
+            arr[k++] = der[j++];
+    }
+    while (i < n1) arr[k++] = izq[i++];
+    while (j < n2) arr[k++] = der[j++];
+
+    delete[] izq;
+    delete[] der;
+}
+
+void mergeSort(Listado** arr, int inicio, int fin) {
+    if (inicio >= fin) return;
+    int medio = (inicio + fin) / 2;
+    mergeSort(arr, inicio, medio);
+    mergeSort(arr, medio + 1, fin);
+    merge(arr, inicio, medio, fin);
+}
+
+void Tablero::ordenarListados() {
+    int n = listados->getLength();
+    if (n <= 1) {
+        std::cout << "No hay suficientes listas para ordenar\n";
+        return;
+    }
+
+    // Extraer punteros a array
+    Listado** arr = new Listado * [n];
+    for (int i = 0; i < n; i++)
+        arr[i] = listados->GetPos(i);
+
+    // Ordenar
+    mergeSort(arr, 0, n - 1);
+
+    // Reconstruir lista en nuevo orden
+    delete listados;
+    listados = new LinkedListListados<Listado>();
+    for (int i = 0; i < n; i++)
+        listados->agregar(arr[i]);
+
+    delete[] arr;
+    std::cout << "Listas ordenadas alfabeticamente\n";
+}
