@@ -21,7 +21,7 @@ inline int menuLista(Listado* listado) {
 			break;
 		case 1:
 			listado->mostrarTarjetas();
-			system("pause");
+			_getch();
 			break;
 		case 2:
 
@@ -30,6 +30,7 @@ inline int menuLista(Listado* listado) {
 			break;
 		case 3:
 			listado->eliminarTarjetaPorNombre();
+			_getch();
 			break;
 		case 4:
 			//SELECCIONAR TARJETA
@@ -39,11 +40,12 @@ inline int menuLista(Listado* listado) {
 			break;
 		case 6:
 			listado->deshacer();
+			_getch();
 			break;
 		case 7:
 			break;
 		}
-	} while (opcL != 6);  
+	} while (opcL != 7);  
 	return opcL;
 }
 inline int menuTablero(Tablero* tablero) {
@@ -76,18 +78,19 @@ inline int menuTablero(Tablero* tablero) {
 			if (seleccion < totalUsuarios)
 				tablero->agregarMiembro(usuariosTemp[seleccion].nombre);
 			delete[] usuariosTemp;
-			system("pause");
 			break;
 		}
 		case 1:
 			tablero->mostrarListados();
-			system("pause");
+			_getch();
 			break;
 		case 2:
 			tablero->crearLista();
+			_getch();
 			break;
 		case 3:
 			tablero->eliminarLista();
+			_getch();
 			break;
 		case 4: {
 			std::string nombre;
@@ -150,7 +153,7 @@ int main()
 			archivoIn.close();
 
 			if (encontrado) {
-				cout << "Bienvenido " << u.nombre << "\n";
+				cout << "\nBienvenido " << u.nombre << "\n";
 				Sleep(1000);
 				opc = 1;
 			}
@@ -181,24 +184,30 @@ int main()
 		opc = menuPrincipal.mostrarMenu();
 		switch (opc) {
 		case 0:
+			system("cls");
 			controladora.crearTablero();
+			_getch();
 			break;
 		case 1:
+			system("cls");
 			controladora.mostrarTableros();
+			_getch();
 			break;
 		case 2:
 		{
 			string nombre;
-
+			system("cls");
 			cout << "Ingrese el nombre del tablero a eliminar: ";
 			cin >> nombre;
 			controladora.eliminarTablero(nombre);
+			_getch();
 			break;
 		}
 		
 		case 3: {
 			//SELECCIONAR TABLERO  
 			std::string nombre;
+			system("cls");
 			std::cout << "Ingrese el nombre del tablero: ";
 			std::cin >> nombre;
 
@@ -212,6 +221,7 @@ int main()
 			{
 				std::cout << "Tablero no encontrado\n";
 			}
+			_getch();
 		}
 			break;
 		case 4:
