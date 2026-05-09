@@ -2,6 +2,8 @@
 #include <string>
 #include "Fecha.h"
 #include <iostream>
+#include "Comentarior.h"
+#include "CheckList.h"
 
 enum Prioridad
 {
@@ -23,7 +25,7 @@ private:
 
 public:
     Tarjeta();
-    Tarjeta(std::string nombre, std::string id, std::string descripcion,Prioridad prioridad, Fecha fecha);
+    Tarjeta(std::string nombre, std::string id, std::string descripcion, Prioridad prioridad, Fecha fecha);
     Tarjeta(std::string nombre);
     ~Tarjeta();
 
