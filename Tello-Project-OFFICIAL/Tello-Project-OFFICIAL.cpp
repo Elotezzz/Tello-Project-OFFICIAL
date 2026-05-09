@@ -11,7 +11,7 @@ using namespace std;
 inline int menuLista(Listado* listado) {
 	const char* opcionesL[] = { "Crear Tarjeta", "Ver Tarjetas", "Mover Tarjeta", "Eliminar Tarjeta",
 				"Seleccionar Tarjeta", "Filtrar Tarjetas", "Deshacer", "Volver" };
-	Menu menuCrear("LISTA", opcionesL, 7);
+	Menu menuCrear("LISTA", opcionesL, 8);
 	int opcL;
 	do {
 		opcL = menuCrear.mostrarMenu();
@@ -54,10 +54,31 @@ inline int menuTablero(Tablero* tablero) {
 	do {
 		opcT = menuCrear.mostrarMenu();
 		switch (opcT) {
-		case 0:
-			//LEER TXT Y QUE AÑADI UN USUARIO AL TABLERO
+		case 0: {
+			int totalUsuarios = 0;
+			std::ifstream arch("Usuarios.txt");
+			Usuario temp;
+			while (temp.leer(arch)) totalUsuarios++;
+			arch.close();
 
+			Usuario* usuariosTemp = new Usuario[totalUsuarios];
+			std::ifstream arch2("Usuarios.txt");
+			for (int i = 0; i < totalUsuarios; i++) { usuariosTemp[i].leer(arch2); }
+			arch2.close();
+
+			const char** opcionesUsuarios = new const char* [totalUsuarios + 1];
+			for (int i = 0; i < totalUsuarios; i++) { opcionesUsuarios[i] = usuariosTemp[i].nombre.c_str(); }
+			opcionesUsuarios[totalUsuarios] = "Volver";
+
+			Menu menuUsuarios("SELECCIONAR USUARIO", opcionesUsuarios, totalUsuarios + 1);
+			int seleccion = menuUsuarios.mostrarMenu();
+
+			if (seleccion < totalUsuarios)
+				tablero->agregarMiembro(usuariosTemp[seleccion].nombre);
+			delete[] usuariosTemp;
+			system("pause");
 			break;
+		}
 		case 1:
 			tablero->mostrarListados();
 			system("pause");
