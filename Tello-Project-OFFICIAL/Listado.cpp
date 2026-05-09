@@ -33,9 +33,10 @@ void Listado::mostrarTarjetas() {
 }
 
 Tarjeta* Listado::buscarPorNombreTarjeta(std::string nombre) {
+    auto coincide = [&nombre](Tarjeta* t) { return t != nullptr && t->getNombre() == nombre; };
     for (int i = 0; i < tarjetas->Length(); i++) {
         Tarjeta* t = tarjetas->GetPos(i);
-        if (t != nullptr && t->getNombre() == nombre)
+        if (coincide(t))
             return t;
     }
     return nullptr;
@@ -90,6 +91,15 @@ void Listado::deshacer() {
     }
 }
 void Listado::filtrarTarjetasPrio() {
+    auto contarPrio = [&](Prioridad p) {
+        int cnt = 0;
+        for (int i = 0; i < tarjetas->Length(); i++) {
+            Tarjeta* t = tarjetas->GetPos(i);
+            if (t != nullptr && t->getPrioridad() == p) cnt++;
+        }
+        return cnt;
+    };
+
     tarjetas->ordenarPorPrioridad();
 	std::cout << "Tarjetas ordenadas por prioridad\n";
 }

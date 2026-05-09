@@ -35,10 +35,12 @@ void Tarjeta::editarDescripcion() {
 }
 
 void Tarjeta::editarPrioridad() {
-    std::cout << "Prioridad (0=Baja, 1=Media, 2=Alta): ";
+    auto esValida = [](int p) { return p >= 0 && p <= 2; };
+
+    std::cout << "Prioridad (0 = Baja, 1 = Media, 2 = Alta): ";
     int p;
     std::cin >> p;
-    if (p >= 0 && p <= 2)
+    if (esValida(p))
         prioridad = (Prioridad)p;
     else
         std::cout << "Prioridad invalida\n";

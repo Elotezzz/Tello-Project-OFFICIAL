@@ -230,10 +230,20 @@ int main()
 			cin >> u.password;
 			cout << "Ingrese su correo: ";
 			cin >> u.correo;
-			ofstream archivoOut("Usuarios.txt", ios::app);
-			u.guardar(archivoOut);
-			archivoOut.close();
-			break;
+
+			auto camposValidos = [](const std::string& n, const std::string& p, const std::string& c) {
+				return !n.empty() && !p.empty() && !c.empty();
+			};
+
+			if (camposValidos(u.nombre, u.password, u.correo)) {
+				ofstream archivoOut("Usuarios.txt", ios::app);
+				u.guardar(archivoOut);
+				archivoOut.close();
+				cout << "Usuario registrado correctamente\n";
+			}
+			else {
+				cout << "Intente otra vez\n";
+			}
 		}
 	} while (opc!=1);
 

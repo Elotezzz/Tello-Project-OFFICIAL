@@ -15,9 +15,11 @@ void Controladora::eliminarTablero(std::string nombre) {
 }
 
 Tablero* Controladora::buscarTablero(std::string nombre) {
+    auto coincide = [&nombre](Tablero* t) { return t != nullptr && t->getNombre() == nombre; };
+
     for (int i = 0; i < tableros->getLength(); i++) {
         Tablero* t = tableros->GetPos(i);
-        if (t != nullptr && t->getNombre() == nombre)
+        if (coincide(t))
             return t;
     }
     return nullptr;
@@ -50,11 +52,13 @@ void Controladora::ordenarTableros() {
     for (int i = 0; i < n; i++)
         arr[i] = tableros->GetPos(i);
 
+    auto comparar = [](Tablero* a, Tablero* b) { return a->getNombre() > b->getNombre(); };
+
     // Insertion Sort
     for (int i = 1; i < n; i++) {
         Tablero* key = arr[i];
         int j = i - 1;
-        while (j >= 0 && arr[j]->getNombre() > key->getNombre()) {
+        while (j >= 0 && comparar(arr[j], key)) {
             arr[j + 1] = arr[j];
             j--;
         }

@@ -22,9 +22,11 @@ void Tablero::eliminarListado(std::string nombre) {
 }
 
 Listado* Tablero::buscarListado(std::string nombre) {
+    auto coincide = [&nombre](Listado* l) { return l != nullptr && l->getNombre() == nombre; };
+
     for (int i = 0; i < listados->getLength(); i++) {
         Listado* l = listados->GetPos(i);
-        if (l != nullptr && l->getNombre() == nombre)
+        if (coincide(l))
             return l;
     }
     return nullptr;
@@ -84,9 +86,11 @@ void merge(Listado** arr, int inicio, int medio, int fin) {
     for (int i = 0; i < n1; i++) izq[i] = arr[inicio + i];
     for (int i = 0; i < n2; i++) der[i] = arr[medio + 1 + i];
 
+    auto menor = [](Listado* a, Listado* b) { return a->getNombre() <= b->getNombre(); };
+
     int i = 0, j = 0, k = inicio;
     while (i < n1 && j < n2) {
-        if (izq[i]->getNombre() <= der[j]->getNombre())
+        if (menor(izq[i], der[i]))
             arr[k++] = izq[i++];
         else
             arr[k++] = der[j++];
