@@ -47,14 +47,14 @@ void Listado::eliminarTarjeta(std::string nombre) {
 void Listado::crearTarjeta() {
     std::string nombre;
     std::cout << "Ingrese el nombre de la tarjeta: ";
+    std::cin.ignore();
     std::getline(std::cin, nombre);
-    if (buscarPorNombreTarjeta(nombre) != nullptr)
-    {
+    if (buscarPorNombreTarjeta(nombre) != nullptr) {
         std::cout << "Ya existe una tarjeta con ese nombre\n";
         return;
     }
-    Tarjeta* nuevo = new Tarjeta(nombre);
-    agregarTarjeta(nuevo);
+    agregarTarjeta(new Tarjeta(nombre));
+    std::cout << "Tarjeta creada correctamente\n";
 }
 
 void Listado::eliminarTarjetaPorNombre() {

@@ -37,19 +37,17 @@ void Tablero::mostrarListados() {
 
 void Tablero::crearLista() {
     std::string nombre;
-    std::cout<< "Ingrese el nombre de la lista: ";
+    std::cout << "Ingrese el nombre de la lista: ";
+    std::cin.ignore();
     std::getline(std::cin, nombre);
-
-    if (buscarListado(nombre) != nullptr)
-    {
-        std::cout<< "Ya existe una lista con ese nombre\n";
+    if (buscarListado(nombre) != nullptr) {
+        std::cout << "Ya existe una lista con ese nombre\n";
         return;
     }
-    Listado* nuevo=new Listado(nombre);
     agregarListado(new Listado(nombre));
-
-    std::cout<< "Lista creada correctamente\n";
+    std::cout << "Lista creada correctamente\n";
 }
+
 void Tablero::eliminarLista()
 {
     std::string nombre;

@@ -11,74 +11,71 @@ using namespace std;
 inline int menuLista(Listado* listado) {
 	const char* opcionesL[] = { "Crear Tarjeta", "Ver Tarjetas", "Mover Tarjeta", "Eliminar Tarjeta",
 				"Seleccionar Tarjeta", "Filtrar Tarjetas", "Volver" };
-	Tablero tablero;
 	Menu menuCrear("LISTA", opcionesL, 7);
-	int opcL = menuCrear.mostrarMenu();
-	switch (opcL) {
-	case 0:
-		listado->crearTarjeta();
-		break;
-	case 1:
-		listado->mostrarTarjetas();
-		break;
-	case 2:
-		break;
-	case 3:
-		listado->eliminarTarjetaPorNombre();
-		break;
-	case 4: {
-
-		//SELECCIONAR TARJETA
-
-		break;
-	}
-	case 5:
-		break;
-	case 6:
-		break;
-	}
+	int opcL;
+	do {
+		opcL = menuCrear.mostrarMenu();
+		switch (opcL) {
+		case 0:
+			listado->crearTarjeta();
+			break;
+		case 1:
+			listado->mostrarTarjetas();
+			system("pause");
+			break;
+		case 2:
+			break;
+		case 3:
+			listado->eliminarTarjetaPorNombre();
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		}
+	} while (opcL != 6);  // 6 = Volver
 	return opcL;
 }
 inline int menuTablero(Tablero* tablero) {
 	const char* opcionesT[] = { "Agregar Miembros", "Ver Listas", "Crear lista", "Eliminar Lista",
 				"Seleccionar Lista", "Ordenar Lista", "Volver" };
 	Menu menuCrear("TABLERO", opcionesT, 7);
-	int opcT = menuCrear.mostrarMenu();
-	switch (opcT) {
-	case 0:
-		break;
-	case 1:
-		tablero->mostrarListados();
-		break;
-	case 2:
-		tablero->crearLista();
-		break;
-	case 3:
-		tablero->eliminarLista();
-		break;
-	case 4: {
-
-		//SELECCIONAR LISTA
-		std::string nombre;
-		std::cout << "Ingrese el nombre del tablero: ";
-		std::cin >> nombre;
-		Listado* lista = tablero->buscarListado(nombre);
-		if (lista != nullptr)
-		{
-			menuLista(lista);
+	int opcT;
+	do {
+		opcT = menuCrear.mostrarMenu();
+		switch (opcT) {
+		case 0:
+			break;
+		case 1:
+			tablero->mostrarListados();
+			system("pause");
+			break;
+		case 2:
+			tablero->crearLista();
+			break;
+		case 3:
+			tablero->eliminarLista();
+			break;
+		case 4: {
+			std::string nombre;
+			std::cout << "Ingrese el nombre de la lista: ";
+			std::cin >> nombre;
+			Listado* lista = tablero->buscarListado(nombre);
+			if (lista != nullptr)
+				menuLista(lista);
+			else
+				std::cout << "Lista no encontrada\n";
+			break;
 		}
-		else
-		{
-			std::cout << "Lista no encontrada\n";
+		case 5:
+			break;
+		case 6:
+			break;
 		}
-		break;
-	}
-	case 5:
-		break;
-	case 6:
-		break;
-	}
-	return opcT; 
+	} while (opcT != 6);  // 6 = Volver
+	return opcT;
 }
 
 int main()
