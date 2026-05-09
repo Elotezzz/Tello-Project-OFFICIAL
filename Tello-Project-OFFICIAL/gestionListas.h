@@ -179,4 +179,10 @@ public:
         delete aEliminar;
         length--;
     }
+
+    void setDataPos(T* data, int pos) {
+        NodeListados<T>* node = NodeAt(pos);
+        if (node != nullptr)
+            node->data = data;
+    }
 };

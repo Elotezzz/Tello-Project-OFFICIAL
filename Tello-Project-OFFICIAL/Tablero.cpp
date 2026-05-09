@@ -113,19 +113,15 @@ void Tablero::ordenarListados() {
         return;
     }
 
-    // Extraer punteros a array
     Listado** arr = new Listado * [n];
     for (int i = 0; i < n; i++)
         arr[i] = listados->GetPos(i);
 
-    // Ordenar
     mergeSort(arr, 0, n - 1);
 
-    // Reconstruir lista en nuevo orden
-    delete listados;
-    listados = new LinkedListListados<Listado>();
+    // En lugar de destruir y recrear, solo intercambia los punteros data en los nodos
     for (int i = 0; i < n; i++)
-        listados->agregar(arr[i]);
+        listados->setDataPos(arr[i], i);
 
     delete[] arr;
     std::cout << "Listas ordenadas alfabeticamente\n";
