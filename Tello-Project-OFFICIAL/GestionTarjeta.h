@@ -237,4 +237,29 @@ public:
 		delete aEliminar;
 		length--;
 	}
+	void ordenarPorPrioridad() { //Aca se usó IA pa ver como ordenar punteros ya que el ejemplo del perusall esta con arreglos
+		if (IsEmpty() || length == 1)
+		{
+			std::cout << "No hay suficientes tarjetas para ordenar\n";
+		}
+		bool swapped;
+		do
+		{
+			swapped = false;
+			Nodo<T>* actual = head;
+			while (actual->next = nullptr)
+			{
+				if (actual->data->getPrioridad() < actual->next->data->getPrioridad())
+				{
+					T* temp = actual->data;
+					actual->data = actual->next->data;
+					actual->next->data = temp;
+
+					swapped = true;
+				}
+				actual = actual->next;
+
+			}
+		} while (swapped);
+	}
 };

@@ -36,7 +36,9 @@ inline int menuLista(Listado* listado) {
 			//SELECCIONAR TARJETA
 			break;
 		case 5:
-			//FILTRAR POR PRIORIDAD 
+			//FILTRAR POR PRIORIDAD
+			listado->filtrarTarjetasPrio();
+			Sleep(1000);
 			break;
 		case 6:
 			listado->deshacer();

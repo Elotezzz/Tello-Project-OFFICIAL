@@ -90,3 +90,7 @@ void Listado::deshacer() {
         std::cout << "Se deshizo la eliminacion\n";
     }
 }
+void Listado::filtrarTarjetasPrio() {
+    tarjetas->ordenarPorPrioridad();
+	std::cout << "Tarjetas ordenadas por prioridad\n";
+}

@@ -36,4 +36,5 @@ public:
 	void crearTarjeta();
     void eliminarTarjetaPorNombre();
     void deshacer();
+    void filtrarTarjetasPrio();
 };
