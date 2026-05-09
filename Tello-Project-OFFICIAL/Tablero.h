@@ -24,4 +24,8 @@ public:
     void eliminarListado(std::string nombre);
     Listado* buscarListado(std::string nombre);
     void mostrarListados();
+    friend std::ostream& operator<<(std::ostream& os, const Tablero& t) {
+        os << "Tablero: " << t.nombre << " (" << t.listados->getLength() << " listados)";
+        return os;
+    }
 };

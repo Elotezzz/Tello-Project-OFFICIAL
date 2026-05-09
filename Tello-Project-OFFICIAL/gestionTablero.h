@@ -3,261 +3,183 @@
 #include "Tablero.h"
 
 template <typename T>
-
 class NodeTablero
 {
 public:
-	T data;
-	NodeTablero<T>* siguiente;
-	NodeTablero<T>* anterior;
+    T data;
+    NodeTablero<T>* siguiente;
+    NodeTablero<T>* anterior;
 
-	NodeTablero(T& data) : data(data), siguiente(nullptr), anterior(nullptr) {}
-	NodeTablero(T& data, NodeTablero<T>* next) : data(data), siguiente(siguiente), anterior(nullptr) {}
+    NodeTablero(T& data) : data(data), siguiente(nullptr), anterior(nullptr) {}
 };
 
 template <typename T>
-
 class LinkedListTablero
 {
 private:
-	NodeTablero<T>* cabeza;
-	int length;
+    NodeTablero<T>* cabeza;
+    int length;
 
-	NodeTablero<T>* NodeAt(int pos) {
-		if (pos >= length) {
-			std::cout << "No existe posicion, debe ser menor al tamanio de la lista...\n";
-			return nullptr;
-		}
-		// Buscar el nodo, usando la posición
-		int index = 0;
-		NodeTablero<T>* aux = head;
-		// Este código hace que el puntero aux, salte de nodo en nodo hasta ubicar el nodo
-		// en la posición que está mandada como parámetro
-		while (index < pos) {
-			aux = aux->next;
-			index++;
-		}
-		return aux;
-	}
+    NodeTablero<T>* NodeAt(int pos) {
+        if (pos >= length) {
+            std::cout << "No existe posicion, debe ser menor al tamanio de la lista...\n";
+            return nullptr;
+        }
+        int index = 0;
+        NodeTablero<T>* aux = cabeza;
+        while (index < pos) {
+            aux = aux->siguiente;
+            index++;
+        }
+        return aux;
+    }
 
 public:
-	LinkedListTablero() {
-		cabeza = nullptr;
-	};
-	~LinkedListTablero() {
-		NodeTablero<T>* aux = cabeza;
-		NodeTablero<T>* aux2;
-		// Este código hace que el puntero aux, salte de nodo en nodo hasta eliminar el último
-		while (aux != nullptr) {
-			aux2 = aux->next;
-			delete aux;
-			aux = aux2;
-		}
-	};
+    LinkedListTablero() : cabeza(nullptr), length(0) {}
 
-	void agregar(T data)
-	{
-		NodeTablero<T>* nuevo = new NodeTablero<T>(data);
-		if (cabeza == nullptr)
-		{
-			cabeza = nuevo;
-		}
-		else
-		{
-			NodeTablero<T>* aux = cabeza;
+    ~LinkedListTablero() {
+        NodeTablero<T>* aux = cabeza;
+        NodeTablero<T>* aux2;
+        while (aux != nullptr) {
+            aux2 = aux->siguiente;
+            delete aux;
+            aux = aux2;
+        }
+    }
 
-			while (aux->siguiente != nullptr)
-			{
-				aux = aux->siguiente;
-			}
-			aux->siguiente = nuevo;
-			nuevo->anterior = aux;
-		}
-	}
-	void imprimir(bool reverse = false) {
-		if (isEmpty()) {
-			std::cout << "Esta Vacio...\n";
-			return;
-		}
-		NodeTablero<T>* aux;
+    void agregar(T data) {
+        NodeTablero<T>* nuevo = new NodeTablero<T>(data);
+        if (cabeza == nullptr) {
+            cabeza = nuevo;
+        }
+        else {
+            NodeTablero<T>* aux = cabeza;
+            while (aux->siguiente != nullptr)
+                aux = aux->siguiente;
+            aux->siguiente = nuevo;
+            nuevo->anterior = aux;
+        }
+        length++;
+    }
 
-		if (reverse)
-			aux = NodeAt(length - 1);
-		else
-			aux = cabeza;
-		while (aux != nullptr) {
-			std::cout << aux->data << " ";
+    void imprimir(bool reverse = false) {
+        if (isEmpty()) {
+            std::cout << "Esta Vacio...\n";
+            return;
+        }
+        NodeTablero<T>* aux = reverse ? NodeAt(length - 1) : cabeza;
+        while (aux != nullptr) {
+            std::cout << aux->data << " ";
+            aux = reverse ? aux->anterior : aux->siguiente;
+        }
+        std::cout << std::endl;
+    }
 
-			if (reverse)
-				aux = aux->anterior;
-			else
-				aux = aux->siguiente;
-		}
-		std::cout << std::endl;
-	}
-	int getLength() const { return length; }
-	bool isEmpty() const { return length == 0; }
+    int getLength() const { return length; }
+    bool isEmpty() const { return length == 0; }
 
-	void AgregarInicio(T data) {
-		NodeTablero<T>* node = new NodeTablero<T>(data);
-		if (isEmpty()) { // Cuando está vacío next y prev apuntan a nulo
-			node->siguiente = nullptr;
-			node->anterior = nullptr;
-		}
-		else {
-			node->siguiente = cabeza;
-			cabeza->anterior = node;
-		}
-		cabeza = node;
-		length++;
-	}
+    void AgregarInicio(T data) {
+        NodeTablero<T>* node = new NodeTablero<T>(data);
+        if (!isEmpty()) {
+            node->siguiente = cabeza;
+            cabeza->anterior = node;
+        }
+        cabeza = node;
+        length++;
+    }
 
-	void AgregarEnPos(T data, int pos) {
-		// Ubicamos la posición anterior
-		if (pos == 0) // Agrego al inicio
-			AgregarInicio(data);
-		else
-		{
-			NodeTablero<T>* nodoAnterior = NodeAt(pos - 1);
-			if (nodoAnterior == nullptr) {
-				std::cout << "Error: No se puede ejecutar, posicion fuera de rango\n";
-				return;
-			}
-			NodeTablero<T>* nodoSiguiente = nodoAnterior->siguiente;
-			// El nodo nuevo apunta a la siguiente posición
-			NodeTablero<T>* nodo = new NodeTablero<T>(data, nodoSiguiente, nodoAnterior);
-			// El nodo anterior apunta al nuevo nodo.
-			nodoAnterior->siguiente = nodo;
-			if (nodoSiguiente != nullptr)
-				nodoSiguiente->anterior = nodo;
-			length++;
-		}
-	}
-	void ModificarPrimero(T data) {
-		NodeTablero<T>* NodoActual = NodeAt(0);
-		if (NodoActual != nullptr) {
-			NodoActual->data = data;
-		}
-	}
+    void RemoverPrimero() {
+        if (isEmpty()) {
+            std::cout << "No se puede eliminar un nodo en una lista enlazada vacia\n";
+            return;
+        }
+        NodeTablero<T>* aux = cabeza;
+        cabeza = cabeza->siguiente;
+        if (cabeza != nullptr)
+            cabeza->anterior = nullptr;
+        delete aux;
+        length--;
+    }
 
-	void ModificarPosicion(T data, int pos) {
-		NodeTablero<T>* NodoActual = NodeAt(pos);
-		if (NodoActual != nullptr) {
-			NodoActual->data = data;
-		}
-	}
+    void RemoverPosicion(int pos) {
+        if (isEmpty()) {
+            std::cout << "No se puede eliminar un nodo en una lista enlazada vacia\n";
+            return;
+        }
+        if (pos == 0)
+            RemoverPrimero();
+        else {
+            NodeTablero<T>* nodoAnterior = NodeAt(pos - 1);
+            NodeTablero<T>* nodoEliminar = NodeAt(pos);
+            if (nodoAnterior != nullptr && nodoEliminar != nullptr) {
+                nodoAnterior->siguiente = nodoEliminar->siguiente;
+                if (nodoEliminar->siguiente != nullptr)
+                    nodoEliminar->siguiente->anterior = nodoAnterior;
+                delete nodoEliminar;
+                length--;
+            }
+        }
+    }
 
-	void ModificarUltimo(T data) {
-		NodeTablero<T>* NodoActual = NodeAt(length - 1);
-		if (NodoActual != nullptr) {
-			NodoActual->data = data;
-		}
-	}
+    void RemoverUltimo() {
+        if (isEmpty()) {
+            std::cout << "No se puede eliminar un nodo en una lista enlazada vacia\n";
+            return;
+        }
+        if (length == 1) {
+            delete cabeza;
+            cabeza = nullptr;
+            length--;
+        }
+        else {
+            NodeTablero<T>* nodoPrevio = NodeAt(length - 2);
+            if (nodoPrevio != nullptr) {
+                delete nodoPrevio->siguiente;
+                nodoPrevio->siguiente = nullptr;
+                length--;
+            }
+        }
+    }
 
-	void RemoverPrimero() {
-		if (isEmpty()) {
-			std::cout << "No se puede eliminar un nodo en una lista enlazada vacía\n";
-			return;
-		}
-		NodeTablero<T>* aux = cabeza;
-		cabeza = cabeza->siguiente;
-		delete aux;
-		length--;
-	}
+    T* GetPrimero() {
+        NodeTablero<T>* primero = NodeAt(0);
+        if (primero == nullptr) return nullptr;
+        return &primero->data;
+    }
 
-	void RemoverPosicion(int pos) {
-		if (isEmpty()) {
-			std::cout << "No se puede eliminar un nodo en una lista enlazada vacía\n";
-			return;
-		}
-		if (pos == 0) // Remuevo el inicio
-			RemoveFirst();
-		else {
-			Node<T>* nodeBefore = NodeAt(pos - 1);
-			Node<T>* nodeErase = NodeAt(pos);
-			if (nodeBefore != nullptr && nodeErase != nullptr) {
-				nodeBefore->next = nodeErase->next;
-				// Podemos eliminar con tranquilidad el nodo elegido
-				delete nodeErase;
-				length--;
-			}
-		}
-	}
+    T* GetPos(int pos) {
+        NodeTablero<T>* node = NodeAt(pos);
+        if (node == nullptr) return nullptr;
+        return &node->data;
+    }
 
-	void RemoverUltimo() {
-		if (IsEmpty()) {
-			std::cout << "No se puede eliminar un nodo en una lista enlazada vacía\n";
-			return;
-		}
-		if (length == 1) {
-			NodeTablero<T>* aux = cabeza;
-			cabeza = nullptr;
-			delete aux;
-			length--;
-		}
-		else {
-			// Busca el penúltimo nodo, lo guardamos
-			NodeTablero<T>* nodePrevioAlUltimo = NodeAt(length - 2);
-			if (nodePrevioAlUltimo != nullptr) {
-				// Penúltimo nodo apunte a nulo y hacemos que el último nodo
-				// sea eliminado.
-				NodeTablero<T>* ultimoNodo = nodePrevioAlUltimo->siguiente;
-				nodePrevioAlUltimo->siguiente = nullptr;
-				delete ultimoNodo;
-				length--;
-			}
-		}
-	}
+    T* GetUltimo() {
+        NodeTablero<T>* ultimo = NodeAt(length - 1);
+        if (ultimo == nullptr) return nullptr;
+        return &ultimo->data;
+    }
 
-	T GetPrimero() {
-		NodeTablero<T>* primero = NodeAt(0);
-		return primero != nullptr ? primero->data : -1;
-	}
-
-	T GetPos(int pos) {
-		NodeTablero<T>* node = NodeAt(pos);
-		return node != nullptr ? node->data : -1;
-	}
-
-	T GetUltimo() {
-		NodeTablero<T>* ultimo = NodeAt(length - 1);
-		return ultimo != nullptr ? ultimo->data : -1;
-	}
-
-	void eliminarPorNombre(std::string nombre) {
-		if (cabeza == nullptr) return;
-		if (cabeza->data.getNombre() == nombre) //En caso que el 
-		{
-			NodeTablero<T>* aux = cabeza;
-			cabeza = cabeza->siguiente;
-			if (cabeza != nullptr)
-			{
-				cabeza->anterior = nullptr;
-			}
-			delete aux;
-			length--;
-			return;
-		}
-		NodeTablero<T>* actual = cabeza;
-		while (actual != nullptr && actual->data.getNombre() != nombre) {
-			actual = actual->siguiente;
-		}
-		if (actual == nullptr)
-		{
-			std::cout << "No se encontro el tablero a eliminar" << std::endl;
-			return;
-		}
-		NodeTablero<T>* anterior = actual->anterior;     //En esta parte usamos IA que nos explique bien como hacer la conexion de los nodos
-		NodeTablero<T>* siguiente = actual->siguiente;
-
-		anterior->siguiente = siguiente;
-		if (siguiente != nullptr)
-		{
-			siguiente->anterior = anterior;
-		}
-		delete actual;
-
-		length--;
-	}
+    void eliminarPorNombre(std::string nombre) {
+        if (isEmpty()) {
+            std::cout << "La lista esta vacia\n";
+            return;
+        }
+        if (cabeza->data.getNombre() == nombre) {
+            RemoverPrimero();
+            return;
+        }
+        NodeTablero<T>* anterior = cabeza;
+        while (anterior->siguiente != nullptr && anterior->siguiente->data.getNombre() != nombre)
+            anterior = anterior->siguiente;
+        if (anterior->siguiente == nullptr) {
+            std::cout << "No se encontro el tablero con nombre: " << nombre << std::endl;
+            return;
+        }
+        NodeTablero<T>* aEliminar = anterior->siguiente;
+        anterior->siguiente = aEliminar->siguiente;
+        if (aEliminar->siguiente != nullptr)
+            aEliminar->siguiente->anterior = anterior;
+        delete aEliminar;
+        length--;
+    }
 };
-
