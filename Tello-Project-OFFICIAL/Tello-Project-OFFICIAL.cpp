@@ -8,6 +8,55 @@
 #include "Listado.h"
 using namespace std;
 
+inline int menuTarjeta(Tarjeta* tarjeta) {
+	const char* opcionesT[] = { "Ver datos", "Editar nombre", "Editar descripcion",
+		"Editar prioridad", "Editar fecha", "Agregar comentario",
+		"Agregar item checklist", "Marcar item checklist", "Volver" };
+	Menu menuCrear("TARJETA", opcionesT, 9);
+	int opcT;
+	do {
+		opcT = menuCrear.mostrarMenu();
+		switch (opcT) {
+		case 0:
+			tarjeta->mostrarDatos();
+			_getch();
+			break;
+		case 1:
+			tarjeta->editarNombre();
+			break;
+		case 2:
+			tarjeta->editarDescripcion();
+			break;
+		case 3:
+			tarjeta->editarPrioridad();
+			break;
+		case 4:
+			tarjeta->editarFecha();
+			break;
+		case 5:
+			std::cin.ignore();
+			tarjeta->agregarComentario();
+			break;
+		case 6:
+			std::cin.ignore();
+			tarjeta->agregarItemChecklist();
+			break;
+		case 7: {
+			tarjeta->getChecklist().mostrar();
+			std::cout << "Ingrese posicion a marcar: ";
+			int pos;
+			std::cin >> pos;
+			tarjeta->getChecklist().marcarCompletado(pos);
+			_getch();
+			break;
+		}
+		case 8:
+			break;
+		}
+	} while (opcT != 8);
+	return opcT;
+}
+
 inline int menuLista(Listado* listado) {
 	const char* opcionesL[] = { "Crear Tarjeta", "Ver Tarjetas", "Mover Tarjeta", "Eliminar Tarjeta",
 				"Seleccionar Tarjeta", "Filtrar Tarjetas", "Deshacer", "Volver" };
@@ -32,9 +81,17 @@ inline int menuLista(Listado* listado) {
 			listado->eliminarTarjetaPorNombre();
 			_getch();
 			break;
-		case 4:
-			//SELECCIONAR TARJETA
+		case 4: {
+			std::string nombre;
+			std::cout << "Ingrese el nombre de la tarjeta: ";
+			std::cin >> nombre;
+			Tarjeta* tarjeta = listado->buscarPorNombreTarjeta(nombre);
+			if (tarjeta != nullptr)
+				menuTarjeta(tarjeta);
+			else
+				std::cout << "Tarjeta no encontrada\n";
 			break;
+		}
 		case 5:
 			//FILTRAR POR PRIORIDAD
 			listado->filtrarTarjetasPrio();
