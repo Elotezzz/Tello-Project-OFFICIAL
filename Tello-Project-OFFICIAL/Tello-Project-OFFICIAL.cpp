@@ -66,33 +66,65 @@ inline int menuTablero() {
 int main()
 {
 	int opc;
-	//Usuario u;
+	Usuario u;
 
-	//const char* opcionesU[] = { "Iniciar sesion", "Registrarse"};
-	//Menu menuUsuario("BIENVENIDO A TELLO", opcionesU, 2);
-	//do
-	//{
-	//	opc = menuUsuario.mostrarMenu();
-	//	switch (opc) {
-	//	case 0:
+	const char* opcionesU[] = { "Iniciar sesion", "Registrarse"};
+	Menu menuUsuario("BIENVENIDO A TELLO", opcionesU, 2);
+	do
+	{
+		opc = menuUsuario.mostrarMenu();
+		switch (opc) {
+		case 0: {
+			system("cls");
+			string nombreI, passwordI;
+			cout << "Ingrese su nombre: ";
+			cin >> nombreI;
+			cout << "Ingrese su password: ";
+			cin >> passwordI;
 
-	//		//FALTA AGREGAR ESTA FUNCIONALIDAD QUE ES DE QUE EL USUARIO SOLO 
-	//		// PUEDE VER LOS TABLEROS Q HA CREADO O LOS QUE LE HAN COMPARTIDO
-	//		break;
-	//	case 1:
-	//		system("cls");
-	//		cout << "Ingrese su nombre: ";
-	//		cin >> u.nombre;
-	//		cout << "Ingrese su password: ";
-	//		cin >> u.password;
-	//		cout << "Ingrese su correo: ";
-	//		cin >> u.correo;
-	//		ofstream archivoOut("Usuarios.txt", ios::app);
-	//		u.guardar(archivoOut);
-	//		archivoOut.close();
-	//		break;
-	//	}
-	//} while (opc!=1);
+			ifstream archivoIn("Usuarios.txt");
+			if (!archivoIn.is_open()) {
+				cout << "No hay usuarios registrados\n";
+				Sleep(1000);
+				break;
+			}
+
+			bool encontrado = false;
+			Usuario aux;
+			while (aux.leer(archivoIn)) {
+				if (aux.nombre == nombreI && aux.password == passwordI) {
+					encontrado = true;
+					u = aux;
+					break;
+				}
+			}
+			archivoIn.close();
+
+			if (encontrado) {
+				cout << "Bienvenido " << u.nombre << "\n";
+				Sleep(1000);
+				opc = 1;
+			}
+			else {
+				cout << "Usuario o contrasena incorrectos.\n";
+				Sleep(1000);
+			}
+			break;
+			}
+		case 1:
+			system("cls");
+			cout << "Ingrese su nombre: ";
+			cin >> u.nombre;
+			cout << "Ingrese su password: ";
+			cin >> u.password;
+			cout << "Ingrese su correo: ";
+			cin >> u.correo;
+			ofstream archivoOut("Usuarios.txt", ios::app);
+			u.guardar(archivoOut);
+			archivoOut.close();
+			break;
+		}
+	} while (opc!=1);
 	
 
 	const char* opciones[] = { "Crear Tablero", "Ver Tablero", "Eliminar Tablero", "Seleccionar Tablero", "Salir" };

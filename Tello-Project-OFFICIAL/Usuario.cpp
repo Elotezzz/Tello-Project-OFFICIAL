@@ -21,10 +21,10 @@ bool Usuario::leer(std::ifstream& archivo) {
     nombre = linea.substr(8);
 
     if (!getline(archivo, linea)) return false;
-    password = linea.substr(10);
+    correo = linea.substr(8);
 
     if (!getline(archivo, linea)) return false;
-    correo = linea.substr(8);
+    password = linea.substr(10);
 
     return true;
 }
