@@ -20,7 +20,7 @@ public:
 
     void setNombre(std::string nombre);
 
-    void agregarListado(Listado listado);
+    void agregarListado(Listado* listado);
     void eliminarListado(std::string nombre);
     Listado* buscarListado(std::string nombre);
     void mostrarListados();

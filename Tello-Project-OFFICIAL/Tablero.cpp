@@ -1,12 +1,10 @@
 #include "Tablero.h"
 
 Tablero::Tablero() : nombre(""), listados(new LinkedListListados<Listado>()) {}
-Tablero::Tablero(std::string nombre) : nombre(nombre), listados(new LinkedListListados<Listado>())
-{
-    // Estas serian las listas predeterminadas
-    listados->agregar(Listado("Lista de tareas"));
-    listados->agregar(Listado("En proceso"));
-    listados->agregar(Listado("Hecho"));
+Tablero::Tablero(std::string nombre) : nombre(nombre), listados(new LinkedListListados<Listado>()) {
+    listados->agregar(new Listado("Lista de tareas"));
+    listados->agregar(new Listado("En proceso"));
+    listados->agregar(new Listado("Hecho"));
 }
 Tablero::~Tablero() { delete listados; }
 
@@ -15,7 +13,7 @@ int Tablero::getCantidad() const { return listados->getLength(); }
 
 void Tablero::setNombre(std::string nombre) { this->nombre = nombre; }
 
-void Tablero::agregarListado(Listado listado) {
+void Tablero::agregarListado(Listado* listado) {
     listados->agregar(listado);
 }
 
@@ -47,8 +45,8 @@ void Tablero::crearLista() {
         std::cout<< "Ya existe una lista con ese nombre\n";
         return;
     }
-    Listado nuevo(nombre);
-    agregarListado(nuevo);
+    Listado* nuevo=new Listado(nombre);
+    agregarListado(new Listado(nombre));
 
     std::cout<< "Lista creada correctamente\n";
 }

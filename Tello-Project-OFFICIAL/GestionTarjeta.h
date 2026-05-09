@@ -47,6 +47,7 @@ public:
 		// Este código hace que el puntero aux, salte de nodo en nodo hasta eliminar el último
 		while (aux != nullptr) {
 			aux2 = aux->next;
+			delete aux->data;
 			delete aux;
 			aux = aux2;
 		}
@@ -139,6 +140,7 @@ public:
 		}
 		Nodo<T>* aux = head;
 		head = head->next;
+		delete aux->data;
 		delete aux;
 		length--;
 	}
@@ -156,6 +158,7 @@ public:
 			if (nodeBefore != nullptr && nodeErase != nullptr) {
 				nodeBefore->next = nodeErase->next;
 				// Podemos eliminar con tranquilidad el nodo elegido
+				delete nodeErase->data;
 				delete nodeErase;
 				length--;
 			}
@@ -170,6 +173,7 @@ public:
 		if (length == 1) {
 			Nodo<T>* aux = head;
 			head = nullptr;
+			delete aux->data;
 			delete aux;
 			length--;
 		}
@@ -181,6 +185,7 @@ public:
 				// sea eliminado.
 				Nodo<T>* nodeLast = nodePreviousLast->next;
 				nodePreviousLast->next = nullptr;
+				delete nodeLast->data;
 				delete nodeLast;
 				length--;
 			}
@@ -232,6 +237,7 @@ public:
 		// Eliminar el nodo encontrado
 		Nodo<T>* aEliminar = anterior->next;
 		anterior->next = aEliminar->next;
+		delete aEliminar->data;
 		delete aEliminar;
 		length--;
 	}
