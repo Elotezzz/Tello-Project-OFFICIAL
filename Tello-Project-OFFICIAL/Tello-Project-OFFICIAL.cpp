@@ -35,7 +35,7 @@ inline int menuLista(Listado* listado) {
 		case 6:
 			break;
 		}
-	} while (opcL != 6);  // 6 = Volver
+	} while (opcL != 6);  
 	return opcL;
 }
 inline int menuTablero(Tablero* tablero) {
@@ -74,7 +74,7 @@ inline int menuTablero(Tablero* tablero) {
 		case 6:
 			break;
 		}
-	} while (opcT != 6);  // 6 = Volver
+	} while (opcT != 6);  
 	return opcT;
 }
 

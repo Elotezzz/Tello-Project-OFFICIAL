@@ -98,5 +98,8 @@
     <ClInclude Include="Etiquetas.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="HistorialTarjeta.h">
+      <Filter>Gestion</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -144,6 +144,7 @@
     <ClInclude Include="gestionListas.h" />
     <ClInclude Include="gestionTablero.h" />
     <ClInclude Include="GestionTarjeta.h" />
+    <ClInclude Include="HistorialTarjeta.h" />
     <ClInclude Include="Listado.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Tablero.h" />
