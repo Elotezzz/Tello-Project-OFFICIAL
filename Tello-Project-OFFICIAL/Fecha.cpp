@@ -1,6 +1,6 @@
 #include "Fecha.h"
 
-Fecha::Fecha() : dia(1), mes(1), ano(2011) {}
+Fecha::Fecha() : dia(0), mes(0), ano(0000) {}
 
 Fecha::Fecha(int dia, int mes, int ano) {
     if (!setDia(dia)) this->dia = 1;
@@ -33,6 +33,8 @@ bool Fecha::setAno(int ano) {
 }
 
 std::string Fecha::toString() const {
+    if (dia == 0 && mes == 0 && ano == 0)
+        return "Sin fecha de entrega";
     auto pad = [](int n) -> std::string {
         return (n < 10 ? "0" : "") + std::to_string(n);
         };

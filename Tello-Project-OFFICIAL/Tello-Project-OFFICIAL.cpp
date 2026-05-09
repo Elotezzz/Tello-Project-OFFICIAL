@@ -66,6 +66,7 @@ inline int menuLista(Listado* listado) {
 		opcL = menuCrear.mostrarMenu();
 		switch (opcL) {
 		case 0:
+			cin.ignore();
 			listado->crearTarjeta();
 			break;
 		case 1:
