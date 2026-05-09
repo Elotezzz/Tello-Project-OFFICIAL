@@ -26,7 +26,6 @@ Tablero* Controladora::buscarTablero(std::string nombre) {
 void Controladora::mostrarTableros() {
     std::cout << "=== Sistema (" << getCantidad() << " tableros) ===" << std::endl;
     tableros->imprimir();
-	system("pause");
 }
 void Controladora::crearTablero() {
 	std::string nombre;
