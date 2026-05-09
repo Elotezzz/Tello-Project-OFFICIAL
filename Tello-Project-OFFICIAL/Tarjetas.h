@@ -2,7 +2,6 @@
 #include <string>
 #include "Fecha.h"
 #include <iostream>
-#include "GestionTarjeta.h"
 
 enum Prioridad
 {
@@ -19,6 +18,8 @@ private:
     std::string descripcion;
     Prioridad prioridad;
     Fecha fecha;
+    Comentarios comentarios;
+    Checklist checklist;
 
 public:
     Tarjeta();
@@ -31,6 +32,8 @@ public:
     std::string getDescripcion() const;
     Prioridad getPrioridad() const;
     Fecha getFecha() const;
+    Comentarios& getComentarios();
+    Checklist& getChecklist();
 
     void setNombre(std::string nombre);
     void setId(std::string id);
