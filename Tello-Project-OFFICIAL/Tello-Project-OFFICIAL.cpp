@@ -10,7 +10,7 @@ using namespace std;
 
 inline int menuLista(Listado* listado) {
 	const char* opcionesL[] = { "Crear Tarjeta", "Ver Tarjetas", "Mover Tarjeta", "Eliminar Tarjeta",
-				"Seleccionar Tarjeta", "Filtrar Tarjetas", "Volver" };
+				"Seleccionar Tarjeta", "Filtrar Tarjetas", "Deshacer", "Volver" };
 	Menu menuCrear("LISTA", opcionesL, 7);
 	int opcL;
 	do {
@@ -38,6 +38,9 @@ inline int menuLista(Listado* listado) {
 			//FILTRAR POR PRIORIDAD 
 			break;
 		case 6:
+			listado->deshacer();
+			break;
+		case 7:
 			break;
 		}
 	} while (opcL != 6);  
