@@ -78,41 +78,50 @@ void Tarjeta::mostrarDatos() {
 }
 
 void Tarjeta::guardar(std::ofstream& arch) const {
-    arch << nombre << "\n";
-    arch << id << "\n";
-    arch << descripcion << "\n";
-    arch << prioridad << "\n";
-    arch << fecha.getDia() << " " << fecha.getMes() << " " << fecha.getAno() << "\n";
-    // Guardar comentarios
-    arch << comentarios.getCantidad() << "\n";
+    arch << "================================\n";
+    arch << "Tarjeta: " << nombre << "\n";
+    arch << "ID: " << id << "\n";
+    arch << "Descripcion: " << descripcion << "\n";
+    arch << "Prioridad: " << prioridad << "\n";
+    arch << "Fecha: " << fecha.getDia() << " " << fecha.getMes() << " " << fecha.getAno() << "\n";
+    arch << "Comentarios: " << comentarios.getCantidad() << "\n";
     for (int i = 0; i < comentarios.getCantidad(); i++)
-        arch << comentarios.getComentario(i) << "\n";
-    // Guardar checklist
-    arch << checklist.getCantidad() << "\n";
+        arch << "  - " << comentarios.getComentario(i) << "\n";
+    arch << "Checklist: " << checklist.getCantidad() << "\n";
     for (int i = 0; i < checklist.getCantidad(); i++)
-        arch << checklist.getItem(i) << "\n" << checklist.estaCompletado(i) << "\n";
+        arch << "  - " << checklist.getItem(i) << " | " << checklist.estaCompletado(i) << "\n";
 }
 
 void Tarjeta::cargar(std::ifstream& arch) {
-    std::getline(arch, nombre);
-    std::getline(arch, id);
-    std::getline(arch, descripcion);
-    int p; arch >> p; prioridad = (Prioridad)p;
-    int d, m, a; arch >> d >> m >> a;
-    arch.ignore();
+    std::string linea;
+    std::getline(arch, linea); // ================================
+    std::getline(arch, linea); nombre = linea.substr(9);
+    std::getline(arch, linea); id = linea.substr(4);
+    std::getline(arch, linea); descripcion = linea.substr(13);
+    std::getline(arch, linea); prioridad = (Prioridad)std::stoi(linea.substr(10));
+    std::getline(arch, linea);
+    // parsear fecha
+    std::string fechaStr = linea.substr(7);
+    int d, m, a;
+    sscanf_s(fechaStr.c_str(), "%d %d %d", &d, &m, &a);
     fecha.setDia(d); fecha.setMes(m); fecha.setAno(a);
-    // Cargar comentarios
-    int numComentarios; arch >> numComentarios; arch.ignore();
+    // comentarios
+    std::getline(arch, linea);
+    int numComentarios = std::stoi(linea.substr(13));
     for (int i = 0; i < numComentarios; i++) {
-        std::string c; std::getline(arch, c);
-        comentarios.agregar(c);
+        std::getline(arch, linea);
+        comentarios.agregar(linea.substr(4));
     }
-    // Cargar checklist
-    int numItems; arch >> numItems; arch.ignore();
+    // checklist
+    std::getline(arch, linea);
+    int numItems = std::stoi(linea.substr(11));
     for (int i = 0; i < numItems; i++) {
-        std::string item; std::getline(arch, item);
+        std::getline(arch, linea);
+        std::string itemStr = linea.substr(4);
+        int sep = itemStr.find(" | ");
+        std::string item = itemStr.substr(0, sep);
+        int comp = std::stoi(itemStr.substr(sep + 3));
         checklist.agregar(item);
-        int comp; arch >> comp; arch.ignore();
         if (comp) checklist.marcarCompletado(i);
     }
 }

@@ -17,6 +17,7 @@ private:
 public:
     Listado();
     Listado(std::string nombre);
+    Listado(bool vacio);
     ~Listado();
 
     std::string getNombre() const;

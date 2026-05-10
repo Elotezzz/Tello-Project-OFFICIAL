@@ -4,6 +4,8 @@ Listado::Listado() : nombre(""), tarjetas(new ListaEnlazadaTarjeta<Tarjeta>()), 
 
 Listado::Listado(std::string nombre) : nombre(nombre), tarjetas(new ListaEnlazadaTarjeta<Tarjeta>()), siguiente(nullptr) {}
 
+Listado::Listado(bool vacio) : nombre(""), tarjetas(new ListaEnlazadaTarjeta<Tarjeta>()), siguiente(nullptr) {}
+
 Listado::~Listado() {
     delete tarjetas;
 }
@@ -106,15 +108,19 @@ void Listado::filtrarTarjetasPrio() {
 }
 
 void Listado::guardar(std::ofstream& arch) const {
-    arch << nombre << "\n";
-    arch << getCantidad() << "\n";
+    arch << "--------------------------------\n";
+    arch << "Listado: " << nombre << "\n";
+    arch << "Tarjetas: " << getCantidad() << "\n";
     for (int i = 0; i < getCantidad(); i++)
         tarjetas->GetPos(i)->guardar(arch);
 }
 
 void Listado::cargar(std::ifstream& arch) {
-    std::getline(arch, nombre);
-    int n; arch >> n; arch.ignore();
+    std::string linea;
+    std::getline(arch, linea); // --------------------------------
+    std::getline(arch, linea); nombre = linea.substr(9);
+    std::getline(arch, linea);
+    int n = std::stoi(linea.substr(9));
     for (int i = 0; i < n; i++) {
         Tarjeta* t = new Tarjeta();
         t->cargar(arch);
