@@ -37,6 +37,18 @@ private:
 		return aux;
 	}
 
+	// Búsqueda recursiva auxiliar
+	Nodo<T>* buscarPorNombreRecursivo(Nodo<T>* nodo, std::string nombre) {
+		// Caso base: llegamos al final sin encontrar
+		if (nodo == nullptr) return nullptr;
+
+		// Caso base: encontramos la tarjeta
+		if (nodo->data->getNombre() == nombre) return nodo;
+
+		// Caso recursivo: buscar en el siguiente nodo
+		return buscarPorNombreRecursivo(nodo->next, nombre);
+	}
+
 public:
 	// Constructor
 	ListaEnlazadaTarjeta() : head(nullptr), length(0) {}
@@ -261,5 +273,25 @@ public:
 
 			}
 		} while (swapped);
+	}
+
+	// Función pública que inicia la búsqueda recursiva
+	T* buscarTarjetaRecursiva(std::string nombre) {
+		Nodo<T>* resultado = buscarPorNombreRecursivo(head, nombre);
+		if (resultado != nullptr) return resultado->data;
+		std::cout << "Tarjeta no encontrada\n";
+		return nullptr;
+	}
+
+	// Función pública para imprimir toda la lista de forma recursiva
+	void imprimirRecursivoAux(Nodo<T>* nodo) {
+		if (nodo == nullptr) {
+			std::cout << std::endl;
+			return;
+		}
+		std::cout << nodo->data->getNombre();
+		if (nodo->next != nullptr)      // solo imprime -> si hay siguiente
+			std::cout << " -> ";
+		imprimirRecursivoAux(nodo->next);
 	}
 };

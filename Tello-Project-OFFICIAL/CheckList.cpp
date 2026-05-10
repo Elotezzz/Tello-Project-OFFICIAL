@@ -74,6 +74,8 @@ void Checklist::mostrar() const {
         std::cout << "Checklist vacia\n";
         return;
     }
+    std::cout << "Progreso: " << contarCompletados() << "/" << cantidad
+        << " (" << obtenerPorcentajeCompletado() << "%)\n";
     for (int i = 0; i < cantidad; i++)
-        std::cout << "  [" << (completado[i] ? "X" : " ") << "] " << items[i] << std::endl;
+        std::cout << "  [" << (completado[i] ? "X" : " ") << "] " << items[i] << "\n";
 }

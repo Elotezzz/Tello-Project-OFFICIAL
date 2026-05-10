@@ -56,7 +56,6 @@ void Tablero::mostrarMiembros() const{
 void Tablero::crearLista() {
     std::string nombre;
     std::cout << "Ingrese el nombre de la lista: ";
-    std::cin.ignore();
     std::getline(std::cin, nombre);
     if (buscarListado(nombre) != nullptr) {
         std::cout << "Ya existe una lista con ese nombre\n";
