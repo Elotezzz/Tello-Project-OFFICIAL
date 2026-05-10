@@ -195,7 +195,6 @@ int main()
 	int opc;
 	Usuario u;
 	Controladora controladora;
-	controladora.cargarDatos();
 	const char* opcionesU[] = { "Iniciar sesion", "Registrarse"};
 	Menu menuUsuario("BIENVENIDO A TELLO", opcionesU, 2);
 	do
@@ -310,7 +309,6 @@ int main()
 		}
 			break;
 		case 4:
-			controladora.guardarDatos(); 
 			break;
 		}
 	} while (opc != 4);
