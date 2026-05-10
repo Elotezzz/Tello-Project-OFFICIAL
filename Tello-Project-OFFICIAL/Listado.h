@@ -4,6 +4,8 @@
 #include "Tarjetas.h"
 #include "GestionTarjeta.h"
 #include "HistorialTarjeta.h"
+#include <fstream>
+
 class Listado
 {
 private:
@@ -37,4 +39,6 @@ public:
     void eliminarTarjetaPorNombre();
     void deshacer();
     void filtrarTarjetasPrio();
+    void guardar(std::ofstream& arch) const;
+    void cargar(std::ifstream& arch);
 };

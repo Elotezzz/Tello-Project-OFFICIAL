@@ -48,7 +48,6 @@ void Listado::eliminarTarjeta(std::string nombre) {
 void Listado::crearTarjeta() {
     std::string nombre;
     std::cout << "Ingrese el nombre de la tarjeta: ";
-    std::cin.ignore();
     std::getline(std::cin, nombre);
     if (buscarPorNombreTarjeta(nombre) != nullptr) {
         std::cout << "Ya existe una tarjeta con ese nombre\n";
@@ -103,4 +102,21 @@ void Listado::filtrarTarjetasPrio() {
 
     tarjetas->ordenarPorPrioridad();
 	std::cout << "Tarjetas ordenadas por prioridad\n";
+}
+
+void Listado::guardar(std::ofstream& arch) const {
+    arch << nombre << "\n";
+    arch << getCantidad() << "\n";
+    for (int i = 0; i < getCantidad(); i++)
+        tarjetas->GetPos(i)->guardar(arch);
+}
+
+void Listado::cargar(std::ifstream& arch) {
+    std::getline(arch, nombre);
+    int n; arch >> n; arch.ignore();
+    for (int i = 0; i < n; i++) {
+        Tarjeta* t = new Tarjeta();
+        t->cargar(arch);
+        agregarTarjeta(t);
+    }
 }

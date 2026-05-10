@@ -76,3 +76,43 @@ void Tarjeta::mostrarDatos() {
     std::cout << "Comentarios:\n";
     comentarios.mostrar();
 }
+
+void Tarjeta::guardar(std::ofstream& arch) const {
+    arch << nombre << "\n";
+    arch << id << "\n";
+    arch << descripcion << "\n";
+    arch << prioridad << "\n";
+    arch << fecha.getDia() << " " << fecha.getMes() << " " << fecha.getAno() << "\n";
+    // Guardar comentarios
+    arch << comentarios.getCantidad() << "\n";
+    for (int i = 0; i < comentarios.getCantidad(); i++)
+        arch << comentarios.getComentario(i) << "\n";
+    // Guardar checklist
+    arch << checklist.getCantidad() << "\n";
+    for (int i = 0; i < checklist.getCantidad(); i++)
+        arch << checklist.getItem(i) << "\n" << checklist.estaCompletado(i) << "\n";
+}
+
+void Tarjeta::cargar(std::ifstream& arch) {
+    std::getline(arch, nombre);
+    std::getline(arch, id);
+    std::getline(arch, descripcion);
+    int p; arch >> p; prioridad = (Prioridad)p;
+    int d, m, a; arch >> d >> m >> a;
+    arch.ignore();
+    fecha.setDia(d); fecha.setMes(m); fecha.setAno(a);
+    // Cargar comentarios
+    int numComentarios; arch >> numComentarios; arch.ignore();
+    for (int i = 0; i < numComentarios; i++) {
+        std::string c; std::getline(arch, c);
+        comentarios.agregar(c);
+    }
+    // Cargar checklist
+    int numItems; arch >> numItems; arch.ignore();
+    for (int i = 0; i < numItems; i++) {
+        std::string item; std::getline(arch, item);
+        checklist.agregar(item);
+        int comp; arch >> comp; arch.ignore();
+        if (comp) checklist.marcarCompletado(i);
+    }
+}

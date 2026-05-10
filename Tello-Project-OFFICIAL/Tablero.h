@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Listado.h"
 #include "gestionListas.h"
+#include <fstream>
 
 class Tablero
 {
@@ -37,4 +38,6 @@ public:
     void crearLista();
     void eliminarLista();
     void ordenarListados();
+    void guardar(std::ofstream& arch) const;
+    void cargar(std::ifstream& arch);
 };
