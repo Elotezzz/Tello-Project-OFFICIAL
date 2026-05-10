@@ -302,6 +302,6 @@ int main()
 		case 4:
 			break;
 		}
-	} while (opc != 5);
+	} while (opc != 4);
 	return 0;
 }
