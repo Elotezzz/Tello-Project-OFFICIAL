@@ -1,0 +1,22 @@
+1
+EstructuraDeDatos
+0
+3
+Lista de tareas
+0
+En proceso
+1
+TrabajoParcial
+
+Despues se juega Left
+2
+10 5 2026
+1
+Hay que terminarlo rapido
+2
+Codigo
+0
+DiagramaDeClases
+0
+Hecho
+0

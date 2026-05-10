@@ -51,7 +51,7 @@ public:
     void agregarItemChecklist();
     void mostrarDatos();
     friend std::ostream& operator<<(std::ostream& os, const Tarjeta& t) {
-        os << "Nombre: " << t.nombre << "\nPrioridad: " << t.prioridad << "\nFecha: " << t.fecha.toString() << "\nDescripcion" << t.descripcion;
+        os << "Nombre: " << t.nombre << "\nPrioridad: " << t.prioridad << "\nFecha: " << t.fecha.toString() << "\nDescripcion: " << t.descripcion;
         return os;
     }
     void guardar(std::ofstream& arch) const;
