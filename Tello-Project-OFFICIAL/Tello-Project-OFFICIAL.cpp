@@ -195,7 +195,6 @@ int main()
 	int opc;
 	Usuario u;
 	Controladora controladora;
-	Controladora controladora;
 	controladora.cargarDatos();
 	const char* opcionesU[] = { "Iniciar sesion", "Registrarse"};
 	Menu menuUsuario("BIENVENIDO A TELLO", opcionesU, 2);
