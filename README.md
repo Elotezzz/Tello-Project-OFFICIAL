@@ -21,6 +21,7 @@ Desarrollo realizado:
 
 Autoevaluación: 20
 ====================================
+
 **Mauricio Alonso Calderon Zavalaga**
 Desarrollo realizado:
 - Agregación de Tablero y Listado
@@ -39,6 +40,7 @@ Desarrollo realizado:
 
 Autoevaluación: 20
 ====================================
+
 Khaled Yair Loarte Macedo
 Desarrollo realizado:
 - Agregación de archivos de proyecto
