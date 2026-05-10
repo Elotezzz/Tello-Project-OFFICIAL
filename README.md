@@ -7,7 +7,7 @@ Integrantes:
 
 ====================================
 
-**Gianfranco Gabriel Vera Alvarez**
+Gianfranco Gabriel Vera Alvarez
 Desarrollo realizado:
 - Agregación de punteros en Tarjeta* siguiente
 - Agregación de funciones getSiguiente(), setSiguiente() y mostrarDatos()
@@ -22,7 +22,7 @@ Desarrollo realizado:
 Autoevaluación: 20
 ====================================
 
-**Mauricio Alonso Calderon Zavalaga**
+Mauricio Alonso Calderon Zavalaga
 Desarrollo realizado:
 - Agregación de Tablero y Listado
 - Implementada lógica de lista enlazada
@@ -55,5 +55,5 @@ Desarrollo realizado:
 Autoevaluación: 20
 ====================================
 
-**Video de exposición:**
-NO HAY TODAVÍA
+Video de exposición:
+NO HAY TODAVÍA**
