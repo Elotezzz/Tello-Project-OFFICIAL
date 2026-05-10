@@ -5,7 +5,7 @@ Integrantes:
 2. Mauricio Alonso Calderon Zavalaga
 3. Khaled Yair Loarte Macedo
 
-====================================
+====================================\n
 **Gianfranco Gabriel Vera Alvarez**
 Desarrollo realizado:
 - Agregación de punteros en Tarjeta* siguiente
