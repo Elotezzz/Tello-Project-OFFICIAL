@@ -195,12 +195,6 @@ int main()
 			cin >> passwordI;
 
 			ifstream archivoIn("Usuarios.txt");
-			if (!archivoIn.is_open()) {
-				cout << "No hay usuarios registrados\n";
-				Sleep(1000);
-				break;
-			}
-
 			bool encontrado = false;
 			Usuario aux;
 			while (aux.leer(archivoIn)) {
