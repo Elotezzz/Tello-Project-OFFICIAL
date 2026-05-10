@@ -106,24 +106,3 @@ void Listado::filtrarTarjetasPrio() {
     tarjetas->ordenarPorPrioridad();
 	std::cout << "Tarjetas ordenadas por prioridad\n";
 }
-
-void Listado::guardar(std::ofstream& arch) const {
-    arch << "--------------------------------\n";
-    arch << "Listado: " << nombre << "\n";
-    arch << "Tarjetas: " << getCantidad() << "\n";
-    for (int i = 0; i < getCantidad(); i++)
-        tarjetas->GetPos(i)->guardar(arch);
-}
-
-void Listado::cargar(std::ifstream& arch) {
-    std::string linea;
-    std::getline(arch, linea); // --------------------------------
-    std::getline(arch, linea); nombre = linea.substr(9);
-    std::getline(arch, linea);
-    int n = std::stoi(linea.substr(9));
-    for (int i = 0; i < n; i++) {
-        Tarjeta* t = new Tarjeta();
-        t->cargar(arch);
-        agregarTarjeta(t);
-    }
-}

@@ -4,7 +4,6 @@
 #include <iostream>
 #include "Comentarior.h"
 #include "CheckList.h"
-#include <fstream>
 
 enum Prioridad
 {
@@ -54,6 +53,4 @@ public:
         os << "Nombre: " << t.nombre << "\nPrioridad: " << t.prioridad << "\nFecha: " << t.fecha.toString() << "\nDescripcion: " << t.descripcion;
         return os;
     }
-    void guardar(std::ofstream& arch) const;
-    void cargar(std::ifstream& arch);
 };

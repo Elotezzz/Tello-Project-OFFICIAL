@@ -132,33 +132,3 @@ void Tablero::ordenarListados() {
     delete[] arr;
     std::cout << "Listas ordenadas alfabeticamente\n";
 }
-
-void Tablero::guardar(std::ofstream& arch) const {
-    arch << "################################\n";
-    arch << "Tablero: " << nombre << "\n";
-    arch << "Miembros: " << cantidadMiembros << "\n";
-    for (int i = 0; i < cantidadMiembros; i++)
-        arch << "  * " << miembro[i] << "\n";
-    arch << "Listados: " << getCantidad() << "\n";
-    for (int i = 0; i < getCantidad(); i++)
-        listados->GetPos(i)->guardar(arch);
-}
-
-void Tablero::cargar(std::ifstream& arch) {
-    std::string linea;
-    std::getline(arch, linea); // ################################
-    std::getline(arch, linea); nombre = linea.substr(9);
-    std::getline(arch, linea);
-    int numMiembros = std::stoi(linea.substr(9));
-    for (int i = 0; i < numMiembros; i++) {
-        std::getline(arch, linea);
-        agregarMiembro(linea.substr(4));
-    }
-    std::getline(arch, linea);
-    int n = std::stoi(linea.substr(9));
-    for (int i = 0; i < n; i++) {
-        Listado* l = new Listado(true);
-        l->cargar(arch);
-        agregarListado(l);
-    }
-}

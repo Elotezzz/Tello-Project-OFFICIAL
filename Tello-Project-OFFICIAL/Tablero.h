@@ -39,6 +39,4 @@ public:
     void crearLista();
     void eliminarLista();
     void ordenarListados();
-    void guardar(std::ofstream& arch) const;
-    void cargar(std::ifstream& arch);
 };

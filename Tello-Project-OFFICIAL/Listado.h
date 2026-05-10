@@ -40,6 +40,4 @@ public:
     void eliminarTarjetaPorNombre();
     void deshacer();
     void filtrarTarjetasPrio();
-    void guardar(std::ofstream& arch) const;
-    void cargar(std::ifstream& arch);
 };
