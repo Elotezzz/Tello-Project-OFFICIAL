@@ -290,7 +290,7 @@ public:
 			return;
 		}
 		std::cout << nodo->data->getNombre();
-		if (nodo->next != nullptr)      // solo imprime -> si hay siguiente
+		if (nodo->next != nullptr) 
 			std::cout << " -> ";
 		imprimirRecursivoAux(nodo->next);
 	}

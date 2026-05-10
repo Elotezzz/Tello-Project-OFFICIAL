@@ -19,8 +19,7 @@ Tablero* Controladora::buscarTablero(std::string nombre) {
 
     for (int i = 0; i < tableros->getLength(); i++) {
         Tablero* t = tableros->GetPos(i);
-        if (coincide(t))
-            return t;
+        if (coincide(t)) return t;
     }
     return nullptr;
 }
@@ -44,8 +43,7 @@ void Controladora::crearTablero() {
 void Controladora::ordenarTableros() {
     int n = tableros->getLength();
     if (n <= 1) {
-        std::cout << "No hay suficientes tableros para ordenar\n";
-        return;
+        std::cout << "No hay suficientes tableros para ordenar\n"; return;
     }
 
     Tablero** arr = new Tablero * [n];
@@ -66,9 +64,7 @@ void Controladora::ordenarTableros() {
     }
 
     // Reenlazar sin destruir
-    for (int i = 0; i < n; i++)
-        tableros->setDataPos(arr[i], i);
-
+    for (int i = 0; i < n; i++) tableros->setDataPos(arr[i], i);
     delete[] arr;
     std::cout << "Tableros ordenados alfabeticamente\n";
 }

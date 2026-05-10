@@ -122,7 +122,7 @@ void Tablero::ordenarListados() {
 
     mergeSort(arr, 0, n - 1);
 
-    // En lugar de destruir y recrear, solo intercambia los punteros data en los nodos
+    // En lugar de destruir y recrear, solo intercambio los punteros data en los nodos
     for (int i = 0; i < n; i++)
         listados->setDataPos(arr[i], i);
 

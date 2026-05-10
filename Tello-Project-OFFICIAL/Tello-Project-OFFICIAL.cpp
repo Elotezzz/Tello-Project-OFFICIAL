@@ -18,30 +18,38 @@ inline int menuTarjeta(Tarjeta* tarjeta) {
 		opcT = menuCrear.mostrarMenu();
 		switch (opcT) {
 		case 0:
+			cout << "\n";
 			tarjeta->mostrarDatos();
 			_getch();
 			break;
 		case 1:
+			cout << "\n";
 			tarjeta->editarNombre();
 			break;
 		case 2:
+			cout << "\n";
 			tarjeta->editarDescripcion();
 			break;
 		case 3:
+			cout << "\n";
 			tarjeta->editarPrioridad();
 			break;
 		case 4:
+			cout << "\n";
 			tarjeta->editarFecha();
 			break;
 		case 5:
+			cout << "\n";
 			std::cin.ignore();
 			tarjeta->agregarComentario();
 			break;
 		case 6:
+			cout << "\n";
 			std::cin.ignore();
 			tarjeta->agregarItemChecklist();
 			break;
 		case 7: {
+			cout << "\n";
 			tarjeta->getChecklist().mostrar();
 			std::cout << "Ingrese posicion a marcar: ";
 			int pos;
@@ -58,9 +66,9 @@ inline int menuTarjeta(Tarjeta* tarjeta) {
 }
 
 inline int menuLista(Listado* listado) {
-	const char* opcionesL[] = { "Crear Tarjeta", "Ver Tarjetas", "Mover Tarjeta", "Eliminar Tarjeta",
+	const char* opcionesL[] = { "Crear Tarjeta", "Ver Tarjetas", "Eliminar Tarjeta",
 				"Seleccionar Tarjeta", "Filtrar Tarjetas", "Deshacer", "Volver" };
-	Menu menuCrear("LISTA", opcionesL, 8);
+	Menu menuCrear("LISTA", opcionesL, 7);
 	int opcL;
 	do {
 		opcL = menuCrear.mostrarMenu();
@@ -70,19 +78,17 @@ inline int menuLista(Listado* listado) {
 			listado->crearTarjeta();
 			break;
 		case 1:
+			system("cls");
 			listado->mostrarTarjetas();
 			_getch();
 			break;
 		case 2:
-
-			//MOVER TARJETAS A OTRAS LISTAS
-
-			break;
-		case 3:
+			system("cls");
 			listado->eliminarTarjetaPorNombre();
 			_getch();
 			break;
-		case 4: {
+		case 3: {
+			system("cls");
 			std::string nombre;
 			std::cout << "Ingrese el nombre de la tarjeta: ";
 			std::cin >> nombre;
@@ -93,19 +99,21 @@ inline int menuLista(Listado* listado) {
 				std::cout << "Tarjeta no encontrada\n";
 			break;
 		}
-		case 5:
+		case 4:
 			//FILTRAR POR PRIORIDAD
+			system("cls");
 			listado->filtrarTarjetasPrio();
 			Sleep(1000);
 			break;
-		case 6:
+		case 5:
+			system("cls");
 			listado->deshacer();
 			_getch();
 			break;
-		case 7:
+		case 6:
 			break;
 		}
-	} while (opcL != 7);  
+	} while (opcL != 6);  
 	return opcL;
 }
 inline int menuTablero(Tablero* tablero) {
@@ -117,6 +125,7 @@ inline int menuTablero(Tablero* tablero) {
 		opcT = menuCrear.mostrarMenu();
 		switch (opcT) {
 		case 0: {
+			system("cls");
 			int totalUsuarios = 0;
 			std::ifstream arch("Usuarios.txt");
 			Usuario temp;
@@ -141,19 +150,23 @@ inline int menuTablero(Tablero* tablero) {
 			break;
 		}
 		case 1:
+			system("cls");
 			tablero->mostrarListados();
 			_getch();
 			break;
 		case 2:
+			system("cls");
 			std::cin.ignore();
 			tablero->crearLista();
 			_getch();
 			break;
 		case 3:
+			system("cls");
 			tablero->eliminarLista();
 			_getch();
 			break;
 		case 4: {
+			system("cls");
 			std::string nombre;
 			std::cout << "Ingrese el nombre de la lista: ";
 			std::cin >> nombre;
@@ -165,6 +178,7 @@ inline int menuTablero(Tablero* tablero) {
 			break;
 		}
 		case 5:
+			system("cls");
 			tablero->ordenarListados();
 			_getch();
 			break;

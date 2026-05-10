@@ -43,5 +43,5 @@ void Comentarios::mostrar() const {
         return;
     }
     for (int i = 0; i < cantidad; i++)
-        std::cout << "  [" << i << "] " << comentarios[i] << std::endl;
+        std::cout << "  [" << i + 1 << "] " << comentarios[i] << std::endl;
 }

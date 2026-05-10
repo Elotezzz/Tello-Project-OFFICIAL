@@ -6,7 +6,7 @@ template <typename T>
 class NodeListados
 {
 public:
-    T* data;                    // <-- puntero
+    T* data;
     NodeListados<T>* siguiente;
     NodeListados<T>* anterior;
 
@@ -22,7 +22,7 @@ private:
 
     NodeListados<T>* NodeAt(int pos) {
         if (pos >= length) {
-            std::cout << "No existe posicion, debe ser menor al tamanio de la lista...\n";
+            std::cout << "No existe posicion, debe ser menor al tamanio de la lista\n";
             return nullptr;
         }
         int index = 0;
@@ -42,13 +42,13 @@ public:
         NodeListados<T>* aux2;
         while (aux != nullptr) {
             aux2 = aux->siguiente;
-            delete aux->data;   // <-- libera el Listado
+            delete aux->data;
             delete aux;
             aux = aux2;
         }
     }
 
-    void agregar(T* data) {     // <-- puntero
+    void agregar(T* data) {
         NodeListados<T>* nuevo = new NodeListados<T>(data);
         if (cabeza == nullptr) {
             cabeza = nuevo;
@@ -65,12 +65,12 @@ public:
 
     void imprimir(bool reverse = false) {
         if (isEmpty()) {
-            std::cout << "Esta Vacio...\n";
+            std::cout << "Esta Vacio\n";
             return;
         }
         NodeListados<T>* aux = reverse ? NodeAt(length - 1) : cabeza;
         while (aux != nullptr) {
-            std::cout << *aux->data << " ";   // <-- desreferencia
+            std::cout << *aux->data << " ";
             aux = reverse ? aux->anterior : aux->siguiente;
         }
         std::cout << std::endl;
@@ -88,7 +88,7 @@ public:
         cabeza = cabeza->siguiente;
         if (cabeza != nullptr)
             cabeza->anterior = nullptr;
-        delete aux->data;   // <-- libera el Listado
+        delete aux->data;
         delete aux;
         length--;
     }
@@ -107,7 +107,7 @@ public:
                 nodoAnterior->siguiente = nodoEliminar->siguiente;
                 if (nodoEliminar->siguiente != nullptr)
                     nodoEliminar->siguiente->anterior = nodoAnterior;
-                delete nodoEliminar->data;  // <-- libera el Listado
+                delete nodoEliminar->data;
                 delete nodoEliminar;
                 length--;
             }
@@ -120,7 +120,7 @@ public:
             return;
         }
         if (length == 1) {
-            delete cabeza->data;    // <-- libera el Listado
+            delete cabeza->data;
             delete cabeza;
             cabeza = nullptr;
             length--;
@@ -130,7 +130,7 @@ public:
             if (nodoPrevio != nullptr) {
                 NodeListados<T>* ultimoNodo = nodoPrevio->siguiente;
                 nodoPrevio->siguiente = nullptr;
-                delete ultimoNodo->data;    // <-- libera el Listado
+                delete ultimoNodo->data;
                 delete ultimoNodo;
                 length--;
             }
@@ -140,19 +140,19 @@ public:
     T* GetPrimero() {
         NodeListados<T>* primero = NodeAt(0);
         if (primero == nullptr) return nullptr;
-        return primero->data;   // <-- ya es puntero, sin &
+        return primero->data;
     }
 
     T* GetPos(int pos) {
         NodeListados<T>* node = NodeAt(pos);
         if (node == nullptr) return nullptr;
-        return node->data;      // <-- ya es puntero, sin &
+        return node->data;
     }
 
     T* GetUltimo() {
         NodeListados<T>* ultimo = NodeAt(length - 1);
         if (ultimo == nullptr) return nullptr;
-        return ultimo->data;    // <-- ya es puntero, sin &
+        return ultimo->data;
     }
 
     void eliminarPorNombre(std::string nombre) {
@@ -160,7 +160,7 @@ public:
             std::cout << "La lista esta vacia\n";
             return;
         }
-        if (cabeza->data->getNombre() == nombre) {  // <-- flecha en vez de punto
+        if (cabeza->data->getNombre() == nombre) {
             RemoverPrimero();
             return;
         }
@@ -175,7 +175,7 @@ public:
         anterior->siguiente = aEliminar->siguiente;
         if (aEliminar->siguiente != nullptr)
             aEliminar->siguiente->anterior = anterior;
-        delete aEliminar->data;     // <-- libera el Listado
+        delete aEliminar->data;
         delete aEliminar;
         length--;
     }

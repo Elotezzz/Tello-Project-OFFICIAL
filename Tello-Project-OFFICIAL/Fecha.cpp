@@ -2,6 +2,7 @@
 
 Fecha::Fecha() : dia(0), mes(0), ano(0000) {}
 
+//Uso de IA solo en el constructor para default colocar la fecha default
 Fecha::Fecha(int dia, int mes, int ano) {
     if (!setDia(dia)) this->dia = 1;
     if (!setMes(mes)) this->mes = 1;

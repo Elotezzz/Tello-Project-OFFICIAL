@@ -40,10 +40,8 @@ void Tarjeta::editarPrioridad() {
     std::cout << "Prioridad (0 = Baja, 1 = Media, 2 = Alta): ";
     int p;
     std::cin >> p;
-    if (esValida(p))
-        prioridad = (Prioridad)p;
-    else
-        std::cout << "Prioridad invalida\n";
+    if (esValida(p)) prioridad = (Prioridad)p;
+    else std::cout << "Prioridad invalida\n";
 }
 
 void Tarjeta::editarFecha() {
@@ -54,8 +52,7 @@ void Tarjeta::editarFecha() {
     Fecha nueva;
     if (!nueva.setDia(dia) || !nueva.setMes(mes) || !nueva.setAno(ano))
         std::cout << "Fecha invalida\n";
-    else
-        fecha = nueva;
+    else fecha = nueva;
 }
 
 void Tarjeta::agregarComentario() {

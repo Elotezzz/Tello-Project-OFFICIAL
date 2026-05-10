@@ -23,7 +23,7 @@ private:
 
     NodeTablero<T>* NodeAt(int pos) {
         if (pos >= length) {
-            std::cout << "No existe posicion, debe ser menor al tamanio de la lista...\n";
+            std::cout << "No existe posicion, debe ser menor al tamano de la lista\n";
             return nullptr;
         }
         int index = 0;
@@ -66,7 +66,7 @@ public:
 
     void imprimir(bool reverse = false) {
         if (isEmpty()) {
-            std::cout << "Esta Vacio...\n";
+            std::cout << "Esta Vacio\n";
             return;
         }
         NodeTablero<T>* aux = reverse ? NodeAt(length - 1) : head;

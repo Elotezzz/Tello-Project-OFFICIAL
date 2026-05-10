@@ -2,6 +2,8 @@
 #include <iostream>
 #include "Tarjetas.h"
 
+//aqui copie y pegue como buen programador su codigo profe :D
+
 enum TipoAccion
 {
 	CREAR,
