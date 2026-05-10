@@ -68,3 +68,28 @@ void Controladora::ordenarTableros() {
     delete[] arr;
     std::cout << "Tableros ordenados alfabeticamente\n";
 }
+
+void Controladora::guardarDatos() const {
+    std::ofstream arch("Datos.txt");
+    if (!arch.is_open()) {
+        std::cout << "Error al abrir el archivo para guardar\n";
+        return;
+    }
+    arch << getCantidad() << "\n";
+    for (int i = 0; i < getCantidad(); i++)
+        tableros->GetPos(i)->guardar(arch);
+    arch.close();
+    std::cout << "Datos guardados correctamente\n";
+}
+
+void Controladora::cargarDatos() {
+    std::ifstream arch("Datos.txt");
+    if (!arch.is_open()) return;
+    int n; arch >> n; arch.ignore();
+    for (int i = 0; i < n; i++) {
+        Tablero* t = new Tablero();
+        t->cargar(arch);
+        agregarTablero(t);
+    }
+    arch.close();
+}

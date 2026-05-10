@@ -169,7 +169,8 @@ inline int menuTablero(Tablero* tablero) {
 			system("cls");
 			std::string nombre;
 			std::cout << "Ingrese el nombre de la lista: ";
-			std::cin >> nombre;
+			std::cin.ignore();
+			std::getline(std::cin, nombre);
 			Listado* lista = tablero->buscarListado(nombre);
 			if (lista != nullptr)
 				menuLista(lista);
@@ -194,6 +195,8 @@ int main()
 	int opc;
 	Usuario u;
 	Controladora controladora;
+	Controladora controladora;
+	controladora.cargarDatos();
 	const char* opcionesU[] = { "Iniciar sesion", "Registrarse"};
 	Menu menuUsuario("BIENVENIDO A TELLO", opcionesU, 2);
 	do
@@ -308,6 +311,7 @@ int main()
 		}
 			break;
 		case 4:
+			controladora.guardarDatos();  // <-- añadir esto
 			break;
 		}
 	} while (opc != 4);

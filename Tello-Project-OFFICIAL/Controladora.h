@@ -20,4 +20,6 @@ public:
     void mostrarTableros();
     void crearTablero();
     void ordenarTableros();
+    void guardarDatos() const;
+    void cargarDatos();
 };
