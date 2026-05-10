@@ -94,7 +94,7 @@ void Tarjeta::guardar(std::ofstream& arch) const {
 
 void Tarjeta::cargar(std::ifstream& arch) {
     std::string linea;
-    std::getline(arch, linea); // ================================
+    std::getline(arch, linea);
     std::getline(arch, linea); nombre = linea.substr(9);
     std::getline(arch, linea); id = linea.substr(4);
     std::getline(arch, linea); descripcion = linea.substr(13);

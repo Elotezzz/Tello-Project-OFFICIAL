@@ -310,7 +310,7 @@ int main()
 		}
 			break;
 		case 4:
-			controladora.guardarDatos();  // <-- añadir esto
+			controladora.guardarDatos(); 
 			break;
 		}
 	} while (opc != 4);
