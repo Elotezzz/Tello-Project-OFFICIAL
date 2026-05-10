@@ -41,6 +41,7 @@ Tarjeta* Listado::buscarPorNombreTarjeta(std::string nombre) {
     }
     return nullptr;
 }
+
 void Listado::eliminarTarjeta(std::string nombre) {
     tarjetas->eliminarPorNombre(nombre);
 }

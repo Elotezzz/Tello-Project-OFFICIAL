@@ -16,6 +16,7 @@ private:
 public:
     Tablero();
     Tablero(std::string nombre);
+    Tablero(bool vacio);
     ~Tablero();
 
     std::string getNombre() const;

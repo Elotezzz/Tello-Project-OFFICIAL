@@ -87,7 +87,7 @@ void Controladora::cargarDatos() {
     if (!arch.is_open()) return;
     int n; arch >> n; arch.ignore();
     for (int i = 0; i < n; i++) {
-        Tablero* t = new Tablero();
+        Tablero* t = new Tablero(true);
         t->cargar(arch);
         agregarTablero(t);
     }

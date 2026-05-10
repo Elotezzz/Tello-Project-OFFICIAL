@@ -6,6 +6,9 @@ Tablero::Tablero(std::string nombre) : nombre(nombre), listados(new LinkedListLi
     listados->agregar(new Listado("En proceso"));
     listados->agregar(new Listado("Hecho"));
 }
+Tablero::Tablero(bool vacio) : nombre(""), listados(new LinkedListListados<Listado>()), miembro(new std::string[10]), cantidadMiembros(0) {
+
+}
 Tablero::~Tablero() { delete listados; delete[] miembro; }
 
 std::string Tablero::getNombre() const { return nombre; }
