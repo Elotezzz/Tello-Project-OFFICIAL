@@ -54,9 +54,6 @@
     <ClCompile Include="CheckList.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
-    <ClCompile Include="Etiquetas.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controladora.h">
@@ -93,9 +90,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="CheckList.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Etiquetas.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="HistorialTarjeta.h">

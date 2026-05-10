@@ -126,7 +126,6 @@
     <ClCompile Include="CheckList.cpp" />
     <ClCompile Include="Comentario.cpp" />
     <ClCompile Include="Controladora.cpp" />
-    <ClCompile Include="Etiquetas.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Listado.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -139,7 +138,6 @@
     <ClInclude Include="CheckList.h" />
     <ClInclude Include="Comentarior.h" />
     <ClInclude Include="Controladora.h" />
-    <ClInclude Include="Etiquetas.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="gestionListas.h" />
     <ClInclude Include="gestionTablero.h" />
