@@ -56,9 +56,18 @@ void Tablero::mostrarMiembros() const{
 void Tablero::crearLista() {
     std::string nombre;
     std::cout << "Ingrese el nombre de la lista: ";
+    if (std::cin.peek() == '\n')
+        std::cin.ignore();
     std::getline(std::cin, nombre);
+    if (nombre.empty()) {
+        std::getline(std::cin, nombre);
+    }
     if (buscarListado(nombre) != nullptr) {
         std::cout << "Ya existe una lista con ese nombre\n";
+        return;
+    }
+    if (nombre.empty()) {
+        std::cout << "El nombre no puede estar vacio\n";
         return;
     }
     agregarListado(new Listado(nombre));
@@ -89,7 +98,7 @@ void merge(Listado** arr, int inicio, int medio, int fin) {
 
     int i = 0, j = 0, k = inicio;
     while (i < n1 && j < n2) {
-        if (menor(izq[i], der[i]))
+        if (menor(izq[i], der[j]))
             arr[k++] = izq[i++];
         else
             arr[k++] = der[j++];

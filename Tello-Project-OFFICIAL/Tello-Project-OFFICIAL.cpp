@@ -156,7 +156,6 @@ inline int menuTablero(Tablero* tablero) {
 			break;
 		case 2:
 			system("cls");
-			std::cin.ignore();
 			tablero->crearLista();
 			_getch();
 			break;
