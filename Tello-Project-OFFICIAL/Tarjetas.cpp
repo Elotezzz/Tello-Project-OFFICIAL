@@ -24,24 +24,38 @@ void Tarjeta::setPrioridad(Prioridad prioridad) { this->prioridad = prioridad; }
 void Tarjeta::setFecha(Fecha fecha) { this->fecha = fecha; }
 void Tarjeta::editarNombre() {
     std::cout << "Nuevo nombre: ";
-    std::cin.ignore();
+    if (std::cin.peek() == '\n') std::cin.ignore();
     std::getline(std::cin, nombre);
 }
 
 void Tarjeta::editarDescripcion() {
     std::cout << "Nueva descripcion: ";
-    std::cin.ignore();
+    if (std::cin.peek() == '\n') std::cin.ignore();
     std::getline(std::cin, descripcion);
 }
 
-void Tarjeta::editarPrioridad() {
-    auto esValida = [](int p) { return p >= 0 && p <= 2; };
+void Tarjeta::agregarComentario() {
+    std::string comentario;
+    std::cout << "Comentario: ";
+    if (std::cin.peek() == '\n') std::cin.ignore();
+    std::getline(std::cin, comentario);
+    comentarios.agregar(comentario);
+}
 
-    std::cout << "Prioridad (0 = Baja, 1 = Media, 2 = Alta): ";
-    int p;
-    std::cin >> p;
-    if (esValida(p)) prioridad = (Prioridad)p;
-    else std::cout << "Prioridad invalida\n";
+void Tarjeta::agregarItemChecklist() {
+    std::string item;
+    std::cout << "Item: ";
+    if (std::cin.peek() == '\n') std::cin.ignore();
+    std::getline(std::cin, item);
+    checklist.agregar(item);
+}
+
+void Tarjeta::mostrarDatos() {
+    std::cout << *this << std::endl;
+    std::cout << "Checklist:\n";
+    checklist.mostrar();
+    std::cout << "Comentarios:\n";
+    comentarios.mostrar();
 }
 
 void Tarjeta::editarFecha() {
@@ -55,24 +69,11 @@ void Tarjeta::editarFecha() {
     else fecha = nueva;
 }
 
-void Tarjeta::agregarComentario() {
-    std::string comentario;
-    std::cout << "Comentario: ";
-    std::getline(std::cin, comentario);
-    comentarios.agregar(comentario);
-}
-
-void Tarjeta::agregarItemChecklist() {
-    std::string item;
-    std::cout << "Item: ";
-    std::getline(std::cin, item);
-    checklist.agregar(item);
-}
-
-void Tarjeta::mostrarDatos() {
-    std::cout << *this << std::endl;
-    std::cout << "Checklist:\n";
-    checklist.mostrar();
-    std::cout << "Comentarios:\n";
-    comentarios.mostrar();
+void Tarjeta::editarPrioridad() {
+    auto esValida = [](int p) { return p >= 0 && p <= 2; };
+    std::cout << "Prioridad (0 = Baja, 1 = Media, 2 = Alta): ";
+    int p;
+    std::cin >> p;
+    if (esValida(p)) prioridad = (Prioridad)p;
+    else std::cout << "Prioridad invalida\n";
 }

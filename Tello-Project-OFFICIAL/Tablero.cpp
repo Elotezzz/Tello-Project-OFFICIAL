@@ -56,32 +56,27 @@ void Tablero::mostrarMiembros() const{
 void Tablero::crearLista() {
     std::string nombre;
     std::cout << "Ingrese el nombre de la lista: ";
-    if (std::cin.peek() == '\n')
-        std::cin.ignore();
+    if (std::cin.peek() == '\n') std::cin.ignore();
     std::getline(std::cin, nombre);
     if (nombre.empty()) {
-        std::getline(std::cin, nombre);
+        std::cout << "El nombre no puede estar vacio\n";
+        return;
     }
     if (buscarListado(nombre) != nullptr) {
         std::cout << "Ya existe una lista con ese nombre\n";
-        return;
-    }
-    if (nombre.empty()) {
-        std::cout << "El nombre no puede estar vacio\n";
         return;
     }
     agregarListado(new Listado(nombre));
     std::cout << "Lista creada correctamente\n";
 }
 
-void Tablero::eliminarLista()
-{
+void Tablero::eliminarLista() {
     std::string nombre;
-    std::cout<< "Ingrese el nombre de la lista a eliminar: ";
+    std::cout << "Ingrese el nombre de la lista a eliminar: ";
+    if (std::cin.peek() == '\n') std::cin.ignore();
     std::getline(std::cin, nombre);
-
     eliminarListado(nombre);
-    std::cout<< "Lista eliminada correctamente\n";
+    std::cout << "Lista eliminada correctamente\n";
 }
 
 void merge(Listado** arr, int inicio, int medio, int fin) {

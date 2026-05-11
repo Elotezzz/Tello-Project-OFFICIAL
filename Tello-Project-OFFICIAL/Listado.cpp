@@ -49,6 +49,7 @@ void Listado::eliminarTarjeta(std::string nombre) {
 void Listado::crearTarjeta() {
     std::string nombre;
     std::cout << "Ingrese el nombre de la tarjeta: ";
+    if (std::cin.peek() == '\n') std::cin.ignore();
     std::getline(std::cin, nombre);
     if (buscarPorNombreTarjeta(nombre) != nullptr) {
         std::cout << "Ya existe una tarjeta con ese nombre\n";
@@ -56,7 +57,6 @@ void Listado::crearTarjeta() {
     }
     Tarjeta* nueva = new Tarjeta(nombre);
     agregarTarjeta(nueva);
-
     historial.push(Accion(CREAR, nueva));
     std::cout << "Tarjeta creada correctamente\n";
 }
@@ -64,11 +64,11 @@ void Listado::crearTarjeta() {
 void Listado::eliminarTarjetaPorNombre() {
     std::string nombre;
     std::cout << "Ingrese el nombre de la tarjeta a eliminar: ";
+    if (std::cin.peek() == '\n') std::cin.ignore();
     std::getline(std::cin, nombre);
     Tarjeta* t = buscarPorNombreTarjeta(nombre);
     historial.push(Accion(ELIMINAR, t));
     eliminarTarjeta(nombre);
-
     std::cout << "Tarjeta eliminada correctamente\n";
 }
 

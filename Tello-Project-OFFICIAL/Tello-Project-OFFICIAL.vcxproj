@@ -131,7 +131,7 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Tablero.cpp" />
     <ClCompile Include="Tarjetas.cpp" />
-    <ClCompile Include="Tello-Project-OFFICIAL.cpp" />
+    <ClCompile Include="Tello-Project-OFICIAL.cpp" />
     <ClCompile Include="Usuario.cpp" />
   </ItemGroup>
   <ItemGroup>
