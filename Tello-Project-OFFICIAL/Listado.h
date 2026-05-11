@@ -4,7 +4,6 @@
 #include "Tarjetas.h"
 #include "GestionTarjeta.h"
 #include "HistorialTarjeta.h"
-#include <fstream>
 
 class Listado
 {
@@ -17,7 +16,6 @@ private:
 public:
     Listado();
     Listado(std::string nombre);
-    Listado(bool vacio);
     ~Listado();
 
     std::string getNombre() const;
